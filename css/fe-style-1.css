@@ -1,0 +1,9 @@
+body{
+    font-family: cursive;
+    background: linear-gradient(120deg,#2980b9,#8e44ad);
+    height: 100vh;
+}
+
+.menu-div {
+    width: 600px;
+}
