@@ -1,3 +1,7 @@
+<?php
+ session_start();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,8 +26,6 @@
           <a href="sites/exercises.php" class="btn btn-lg bg-success rounded-5 text-white w-100 shadow-lg" href="">Show Exercises</a>
           <a href="sites/user-manual.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" href="">Help</a>
           <a href="sites/teacher-login.php" class="btn btn-lg bg-warning rounded-5 text-dark w-100 shadow-lg" href="">Log In</a>
-          <a href="bmApp/sites/bm-login.php" class="btn btn-lg bg-success rounded-5 text-dark w-100 shadow-lg" href="">BM Log In</a>
-          <a href="homeApp/sites/home-login.php" class="btn btn-lg bg-success rounded-5 text-dark w-100 shadow-lg" href="">Home Log In</a>
           <a href="sites/about.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" href="">About</a>
         </div>
 
