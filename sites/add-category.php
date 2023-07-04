@@ -1,7 +1,7 @@
 <?php 
-        session_start();
-        require '../engine/check-super-login.php';
-        include '../engine/add-category.php';
+  session_start();
+  require '../engine/check-super-login.php';
+  include '../engine/add-category.php';
 ?>
 
 <!doctype html>

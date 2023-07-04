@@ -1,5 +1,5 @@
 <?php
-session_start();
+  session_start();
   require '../engine/teacher-login.php';
 ?>
 <!doctype html>
@@ -14,13 +14,10 @@ session_start();
   <body>
 
   <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center">
-      
       <div class="container d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-light menu-div bg-opacity-25">
-
         <div class="container d-flex justify-content-center mb-5 bg-opacity-25">
           <h1 class="display-4">Log In</h1> 
         </div>
-        
         <div class="container w-100 d-flex flex-column row-gap-4 align-items-center">
             <form method="post"> 
               <div class="container shadow-lg p-5 border rounded-5 bg-light">
@@ -40,12 +37,10 @@ session_start();
               </div>         
               </form>
         </div>
-
       </div>
-
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="../js/script.js"></script>
+    
   </body>
 </html>
