@@ -1,5 +1,5 @@
 <?php
-        // Fetch Fach options from the database
+        //Fetch -Fach- options
         $fachOptionsQuery = "SELECT DISTINCT fach FROM aufgabe";
         $fachOptionsResult = mysqli_query($conn, $fachOptionsQuery);
         $fachOptions = array();
@@ -7,7 +7,7 @@
           $fachOptions[] = $fachOption['fach'];
         }
 
-        // Fetch Kategorie options from the database
+        // Fetch -Kategorie- 
         $kategorieOptionsQuery = "SELECT DISTINCT kategorie FROM aufgabe";
         $kategorieOptionsResult = mysqli_query($conn, $kategorieOptionsQuery);
         $kategorieOptions = array();

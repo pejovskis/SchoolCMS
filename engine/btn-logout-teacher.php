@@ -1,12 +1,9 @@
 <?php
-
-// Check if the user clicked on the logout button
+//logout-btn clicked
 if (isset($_POST['logout'])) {
-  // Destroy the session
   session_destroy();
-  // Redirect the user to the login page
+  //redirect to guest mode
   header('Location: ../../index.php');
   exit;
 }
-
 ?>

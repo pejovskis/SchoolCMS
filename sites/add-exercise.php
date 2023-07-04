@@ -69,7 +69,6 @@ include '../engine/check-super-user.php';
             </button>
             <button name="submit" type="submit" class="btn btn-primary">upload</button>
             <?php 
-          require '../engine/db-conn-aufgabe.php';
           require '../engine/add-exercise-content.php';
           ?>
           </div>

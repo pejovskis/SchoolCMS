@@ -2,16 +2,16 @@
 
 require 'db-conn-aufgabe.php';
 
-// Fetch data from the database with filtering
+//Fetch data from the database with filtering
 $query = "SELECT * FROM aufgabe WHERE 1=1";
 
-// Check if Fach filter is selected
+//Check -Fach- filter 
 if (!empty($_GET['fach'])) {
   $fach = $_GET['fach'];
   $query .= " AND fach = '$fach'";
 }
 
-// Check if Kategorie filter is selected
+//Check -Kategorie- filter
 if (!empty($_GET['kategorie'])) {
   $kategorie = $_GET['kategorie'];
   $query .= " AND kategorie = '$kategorie'";
@@ -19,12 +19,12 @@ if (!empty($_GET['kategorie'])) {
 
 $result = mysqli_query($conn, $query);
 
-// Check if the query was successful
+//Check errors
 if (!$result) {
   die("Error executing query: " . mysqli_error($conn));
 }
 
-// Loop through the fetched data and generate table rows
+//Generate html rows
 while ($row = mysqli_fetch_assoc($result)) {
   echo "<tr>";
   echo "<th scope='row'>" . $row['id'] . "</th>";

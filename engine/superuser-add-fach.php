@@ -1,6 +1,6 @@
 <?php 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // Process form submission
+
       $aufgabe_name = $_POST['aufgabe-name'];
       $beschreibung = $_POST['beschreibung'];
       $hinweis = $_POST['hinweis'];
@@ -11,12 +11,12 @@
       require 'db-conn-aufgabe.php';
 
       if ($new_kategorie) {
-        // Insert new kategorie into the database
+        //Insert new -kategorie- into the database
         $query = "INSERT INTO aufgabe(name, beschreibung, hinweis, fach, kategorie) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_bind_param($stmt, 'sssss', $aufgabe_name, $beschreibung, $hinweis, $fach, $new_kategorie);
       } else {
-        // Use existing kategorie from the dropdown
+        //Use existing -kategorie-
         $query = "INSERT INTO aufgabe(name, beschreibung, hinweis, fach, kategorie) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_bind_param($stmt, 'sssss', $aufgabe_name, $beschreibung, $hinweis, $fach, $kategorie);

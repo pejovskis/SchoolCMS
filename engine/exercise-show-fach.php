@@ -1,5 +1,6 @@
 <?php
-  $host = "localhost";
+/*
+$host = "localhost";
   $user = "root";
   $password = "";
   $database = "aufgaben";
@@ -20,4 +21,5 @@
   }
 
   mysqli_close($conn);
+  */
 ?>
