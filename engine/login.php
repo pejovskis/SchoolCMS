@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $row = mysqli_fetch_assoc($result);
             //Check password correct
             if (password_verify($password, $row['password'])) {
+                $_SESSION['id'] = $row['id'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['logged_in'] = true;
                 $_SESSION['first_name'] = $row['first_name'];

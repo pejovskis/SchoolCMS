@@ -42,7 +42,7 @@
           if (superCheck()) {
             echo '<div class="form-group">
           <label for="new-fach">New Subject</label>
-          <input name="new-fach" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          <input name="new-fach" type="text" class="form-control"
             placeholder="Create New Subject">
         </div>';
           }
