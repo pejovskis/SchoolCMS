@@ -14,10 +14,12 @@ if ($result && mysqli_num_rows($result) > 0) {
   $exercise_name = $row['name'];
 
   // Set the appropriate headers for the file download
+  header('Content-type: application/octet-stream');
   header("Content-type: application/pdf");
   header("Content-Disposition: attachment; filename=" . $exercise_name . ".pdf");
-
-  // Output the file data
+  while (ob_get_level()) {
+      ob_end_clean();
+  }
   echo $pdfData;
 } else {
   echo "Exercise not found.";

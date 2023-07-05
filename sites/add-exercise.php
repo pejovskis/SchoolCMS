@@ -21,7 +21,7 @@
   <div class="container-fluid vh-100 w-100 d-flex flex-column justify-content-center align-items-center">
     <div class="container w-75 bg-light p-5 rounded-5">
     <h1 class="text-center mb-5"> Add Exercise </h1>
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="aufgabe-name">Excercise Name</label>
           <input name="aufgabe-name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name here">
@@ -62,8 +62,8 @@
             <input name="new-kategorie" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="New Category">
           </div>
           <div class="form-group">
-            <label for="pdf-file">Upload PDF File</label>
-            <input name="pdf-file" type="file" class="form-control">
+            <label for="excercise-file">Upload PDF File</label>
+            <input name="excercise-file" type="file" class="form-control">
           </div>
           <div class="form-check">
           </div>
