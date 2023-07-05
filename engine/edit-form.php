@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../engine/check-login.php';
+require '../engine/btn-delete-exercise.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -73,7 +74,6 @@ require '../engine/check-login.php';
           ?>
           </div>
         </div>
-        
       </form>
     </div>
   </div>
