@@ -67,12 +67,12 @@ require '../engine/db-conn-aufgabe.php';
           <th scope="col">Fach</th>
           <th scope="col">Kategorie</th>
           <th scope="col">Datum</th>
-          <th scope="col">Added By</th>'
+          <th scope="col">Added From</th>'
           <th scope="col">PDF File</th>
           <?php 
             include '../engine/check-super-user.php';
             if(teacherCheck() || superCheck()) {
-              echo '<th scope="col">Edit File</th>';
+              echo '<th scope="col">Edit Excercise</th>';
             }
           ?>
         </tr>
