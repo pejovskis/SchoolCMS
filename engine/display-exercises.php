@@ -37,6 +37,9 @@ while ($row = mysqli_fetch_assoc($result)) {
   $added_by = intval($row['added_by']);
   echo "<td>" . getName($added_by) . "</td>";
   echo "<td><a href='../engine/download.php?id=" . $row['id'] . "'>Download</a></td>";
+  if($_SESSION['status_level'] >= 2) {
+    echo "<td> <a href=''> edit </a> </td>";
+  }
   echo "</tr>";
 }
 

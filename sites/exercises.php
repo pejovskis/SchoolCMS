@@ -69,6 +69,12 @@ require '../engine/db-conn-aufgabe.php';
           <th scope="col">Datum</th>
           <th scope="col">Added By</th>'
           <th scope="col">PDF File</th>
+          <?php 
+            include '../engine/check-super-user.php';
+            if(teacherCheck() || superCheck()) {
+              echo '<th scope="col">Edit File</th>';
+            }
+          ?>
         </tr>
       </thead>
       <tbody>
