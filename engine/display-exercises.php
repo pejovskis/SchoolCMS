@@ -34,10 +34,34 @@ while ($row = mysqli_fetch_assoc($result)) {
   echo "<td>" . $row['fach'] . "</td>";
   echo "<td>" . $row['kategorie'] . "</td>";
   echo "<td>" . $row['add_date'] . "</td>";
-  echo "<td>PDF herunterladen</td>";
+  $added_by = intval($row['added_by']);
+  echo "<td>" . getName($added_by) . "</td>";
+  echo "<td><a href='../engine/download.php?id=" . $row['id'] . "'>Download</a></td>";
   echo "</tr>";
 }
 
-// Close the database connection (optional)
+function getName($added_by) {
+  require 'db-conn-userss.php';
+
+  $first_name = '';
+  $last_name = '';
+  
+  $query = 'SELECT first_name, last_name FROM userss where id="' . $added_by . '";';
+
+  $stmt = mysqli_prepare($conn, $query);
+  mysqli_stmt_execute($stmt);
+
+  $result = mysqli_stmt_get_result($stmt);
+
+  $row = mysqli_fetch_assoc($result);
+  
+  if ($row) {
+    $first_name = strval($row['first_name']);
+    $last_name = strval($row['last_name']);
+    return $first_name . ' ' . $last_name;
+  }
+  return 'Unknown'; 
+}
+
 mysqli_close($conn);
 ?>

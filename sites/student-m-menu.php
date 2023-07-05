@@ -27,9 +27,9 @@
         </div>
         
         <div class="container-fluid w-100 d-flex flex-column row-gap-4 align-items-center bg-light">
-          <a href="sites/exercises.php" class="btn btn-lg bg-success rounded-5 text-white w-100 shadow-lg" href="">Show Exercises</a>
-          <a href="sites/user-manual.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" href="">Help</a>
-          <a href="sites/about.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" href="">About</a>
+          <a href="exercises.php" class="btn btn-lg bg-success rounded-5 text-white w-100 shadow-lg">Show Exercises</a>
+          <a href="user-manual.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg">Help</a>
+          <a href="about.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" >About</a>
           <form method="POST">
             <button class="btn btn-lg btn-danger" name="logout">Log out</button>
         </form>

@@ -54,7 +54,6 @@ require '../engine/db-conn-aufgabe.php';
           </div>
         </form>
       </div>
-      <!-- rest of the code -->
     </div>
   </div>
   <div class="table-responsive">
@@ -68,7 +67,8 @@ require '../engine/db-conn-aufgabe.php';
           <th scope="col">Fach</th>
           <th scope="col">Kategorie</th>
           <th scope="col">Datum</th>
-          <th scope="col">PDF herunterladen</th>
+          <th scope="col">Added By</th>'
+          <th scope="col">PDF File</th>
         </tr>
       </thead>
       <tbody>
