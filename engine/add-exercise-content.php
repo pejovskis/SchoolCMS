@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $new_kategorie = $_POST['new-kategorie'];
   $new_fach = $_POST['new-fach'];
   $current_date = date('Y-m-d');
+  $pdf_file = $_POST['pdf-file'];
   $current_userId = intval($_SESSION['id']);
  
 
@@ -37,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   try {
   //Insert the new exercise in the -aufgabe- table
-  $query = "INSERT INTO aufgabe (name, beschreibung, hinweis, fach, kategorie, add_date, added_by) VALUES (?, ?, ?, ?, ?, ?, ?)";
+  $query = "INSERT INTO aufgabe (name, beschreibung, hinweis, fach, kategorie, pdf_file, add_date, added_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
   $stmt = mysqli_prepare($conn, $query);
-  mysqli_stmt_bind_param($stmt, 'sssssss', $aufgabe_name, $beschreibung, $hinweis, $fach, $kategorie, $current_date, $current_userId);
+  mysqli_stmt_bind_param($stmt, 'ssssssss', $aufgabe_name, $beschreibung, $hinweis, $fach, $kategorie, $current_date, $pdf_file, $current_userId);
 
   if (mysqli_stmt_execute($stmt)) {
     echo "<script>alert('New exercise added successfully!')</script>";
