@@ -4,19 +4,22 @@ require 'check-super-login.php';
 
 require 'db-conn-userss.php';
 
-if (isset($_POST['email']) && isset($_POST['password'])) {
+if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['first-name']) && isset($_POST['last-name']) && isset($_POST['status-level'])) {
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $first_name = $_POST['first-name'];
+    $last_name = $_POST['last-name'];
+    $status_level = $_POST['status-level'];
 
     //Insert the new user in -users- sql
-    $query = "INSERT INTO userss (email, password) VALUES (?, ?)";
+    $query = "INSERT INTO userss (email, password, first_name, last_name, status_level) VALUES (?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $email, $password);
+    mysqli_stmt_bind_param($stmt, "sssss", $email, $password, $first_name, $last_name, $status_level);
 
     if (mysqli_stmt_execute($stmt)) {
-        echo '<h6>New user registered successfully</h6>';
+        echo '<script>alert("New user registered successfully")</script>';
     } else {
-        echo '<h6>Error registering new user</h6>';
+        echo '<script>alert("Error registering new user")</script>';
     }
 }
 

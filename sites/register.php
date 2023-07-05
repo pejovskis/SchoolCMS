@@ -30,7 +30,19 @@ require '../engine/super-new-user-register.php';
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+            <input name="password" type="password" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="first-name" class="form-label">First Name</label>
+            <input name="first-name" type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="last-name" class="form-label">Last Name</label>
+            <input name="last-name" type="text" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="status-level" class="form-label">Status Level</label>
+            <input name="status-level" type="number" class="form-control" id="exampleInputPassword1">
           </div>
           <div class="container-fluid d-flex justify-content-around mt-5">
             <a class="btn btn-lg btn-danger" href="../sites/super-m-menu.php">abbrechen</a>
