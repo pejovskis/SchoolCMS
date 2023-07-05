@@ -3,6 +3,7 @@
 require '../engine/db-conn-aufgabe.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
   // Process form submission
   $aufgabe_name = $_POST['aufgabe-name'];
   $beschreibung = $_POST['beschreibung'];

@@ -62,7 +62,7 @@
             <input name="new-kategorie" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="New Category">
           </div>
           <div class="form-group">
-            <label for="excercise-file">Upload PDF File</label>
+            <label for="excercise-file">Upload ONLY PDF Files !</label>
             <input name="excercise-file" type="file" class="form-control">
           </div>
           <div class="form-check">
