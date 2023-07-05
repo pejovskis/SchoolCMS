@@ -2,6 +2,9 @@
 session_start();
 require '../engine/check-login.php';
 require '../engine/btn-delete-exercise.php';
+if($_SESSION['id'] != $row['added_by'] || $_SESSION['status_level'] < 2) {
+    header('Location: ../sites/exercises.php');
+}
 ?>
 <!doctype html>
 <html lang="en">

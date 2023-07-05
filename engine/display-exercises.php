@@ -36,9 +36,11 @@ while ($row = mysqli_fetch_assoc($result)) {
   echo "<td>" . $row['add_date'] . "</td>";
   $added_by = intval($row['added_by']);
   echo "<td>" . getName($added_by) . "</td>";
-  echo "<td><a href='../engine/download.php?id=" . $row['id'] . "'>Download</a></td>";
-  if($_SESSION['status_level'] >= 2) {
-    echo "<td><a href='../engine/edit.php?id=" . $row['id'] . "'>Edit</a></td>";
+  echo "<td><a class='btn btn-sm bg-primary text-white' href='../engine/download.php?id=" . $row['id'] . "'>Download</a></td>";
+  if($_SESSION['id'] === $added_by || $_SESSION['status_level'] > 2) {
+    echo "<td><a class='btn btn-sm bg-success text-white' href='../engine/edit.php?id=" . $row['id'] . "'>Edit</a></td>";
+  } else {
+    echo "<td> No Access </td>";
   }
   echo "</tr>";
 }
