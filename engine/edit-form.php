@@ -1,5 +1,6 @@
 <?php
 session_start();
+require '../engine/check-login.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -57,10 +58,6 @@ session_start();
             </select>
           </div>
           <div class="form-group">
-            <label for="new-kategorie">New Kategorie</label>
-            <input name="new-kategorie" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="New Category">
-          </div>
-          <div class="form-group">
             <label for="excercise-file">Upload ONLY PDF Files !</label>
             <input name="excercise-file" type="file" class="form-control">
           </div>
@@ -68,7 +65,7 @@ session_start();
           </div>
           <div class="container m-0 d-flex justify-content-around">
             <button class="btn btn-danger">
-              <a href="teacher-m-menu.php" style="text-decoration: none; color: white;"> cancel </a>
+              <a href="../sites/teacher-m-menu.php" style="text-decoration: none; color: white;"> cancel </a>
             </button>
             <button name="submit" type="submit" class="btn btn-primary">save changes</button>
             <?php 

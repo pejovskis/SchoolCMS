@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo '<script>window.setTimeout(function() { window.location.href = "../sites/exercises.php"; }, 100);</script>';
         }
     } catch (Exception $e) {
-        echo '<script>alert("Update failed!");</script>';
+        echo '<script>alert("Update failed! ' . $e->getMessage() . '");</script>';
     }
+    
     
 }
