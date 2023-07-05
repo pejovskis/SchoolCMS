@@ -23,8 +23,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (password_verify($password, $row['password'])) {
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['logged_in'] = true;
-                //Enter to teacher's main menu
-                header('Location: ../sites/teacher-m-menu.php');
+                $_SESSION['first_name'] = $row['first_name'];
+                $_SESSION['last_name'] = $row['last_name'];
+                $_SESSION['status_level'] = $row['status_level'];
+                $currUserLevel = intval($row['status_level']);
+
+                echo '<script>alert(' . json_encode($currUserLevel) . ');</script>';
+
+                switch($currUserLevel) {
+                    case 1:
+                        header('Location: ../sites/student-m-menu.php');
+                        break;
+                    case 2:
+                        header('Location: ../sites/teacher-m-menu.php');
+                        break;
+                    case 9:
+                        header('Location: ../sites/teacher-m-menu.php');
+                        break;
+                }
                 exit;
             } else {
                 echo '<div class="info">Invalid password</div>';

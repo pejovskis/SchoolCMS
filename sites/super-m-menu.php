@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../engine/check-super-login.php';
-include '../engine/btn-logout-teacher.php';
+include '../engine/btn-logout.php';
 ?>
 
 <!doctype html>

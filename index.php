@@ -23,8 +23,8 @@
         </div>
         
         <div class="container-fluid w-100 d-flex flex-column row-gap-4 align-items-center bg-light">
-          <a href="sites/teacher-login.php" class="btn btn-lg bg-warning rounded-5 text-dark w-100 shadow-lg" href="">Log In</a>
-          <a href="sites/user-manual.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" href="">Help</a>
+          <a href="sites/login-menu.php" class="btn btn-lg bg-warning rounded-5 text-dark w-100 shadow-lg">Log In</a>
+          <a href="sites/user-manual.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg">Help</a>
         </div>
 
       </div>

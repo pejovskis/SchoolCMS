@@ -1,6 +1,6 @@
 <?php
   session_start();
-  require '../engine/teacher-login.php';
+  require '../engine/login.php';
 ?>
 <!doctype html>
 <html lang="en">

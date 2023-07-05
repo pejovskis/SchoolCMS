@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../engine/check-login.php';
-include '../engine/btn-logout-teacher.php';
+include '../engine/btn-logout.php';
 include '../engine/check-super-user.php';
 ?>
 
@@ -23,11 +23,7 @@ include '../engine/check-super-user.php';
     <div class="container-fluid d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-light menu-div">
       <div class="container d-flex flex-column justify-content-center align-items-center mb-5">
         <?php
-        if (superCheck()) {
-          echo '<h1> Super User Main Menu </h1>';
-        } else {
-          echo '<h1 class="bg-dark text-white p-3 rounded-5">Teacher Main Menu</h1>' . '<br>' . '<h1> Logged in as: </h1>' . '<h2> <b>' . $_SESSION['email'] . '</b></h2>';
-        }
+          echo '<h1 class="bg-dark text-white p-3 rounded-5">Teacher Main Menu</h1>' . '<h2> Logged in as: </h2>' . '<h3>' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '</h3>';
         ?>
       </div>
       <div class="container-fluid w-100 d-flex flex-column row-gap-4 align-items-center">

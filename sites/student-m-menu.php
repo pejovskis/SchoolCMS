@@ -1,5 +1,7 @@
 <?php
  session_start();
+ require '../engine/check-login.php';
+ include '../engine/btn-logout.php';
 ?>
 
 <!doctype html>
@@ -17,8 +19,10 @@
       
       <div class="container-fluid d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-light menu-div">
 
-        <div class="container d-flex justify-content-center mb-5">
-          <h1>Menu</h1> 
+        <div class="container d-flex flex-column align-items-center mb-5">
+          <?php 
+            echo '<h1 class="bg-dark text-white p-3 rounded-5">Student Main Menu</h1>' . '<h2> Logged in as: </h2>' . '<h3>' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '</h3>';
+            ?>
           <hr>
         </div>
         
@@ -30,7 +34,7 @@
             <button class="btn btn-lg btn-danger" name="logout">Log out</button>
         </form>
         <?php 
-            require '../engine/teacher-logout.php';
+            require '../engine/btn-logout.php';
             ?>
         </div>
 
