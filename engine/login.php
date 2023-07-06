@@ -42,15 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
                 exit;
             } else {
-                echo '<div class="info">Invalid password</div>';
+                echo '<script>alert("Invalid password")</script>';
             }
         } else {
-            // User does not exist
-            echo '<div class="info">User not found</div>';
+            //User does not exist
+            echo '<script>alert("User not found")</script>';
         }
     } else {
-        // Query Error
-        echo '<div class="info">Error executing query</div>';
+        //Query Error
+        echo '<script>alert("Error executing query")</script>';
     }
 }
 ?>
