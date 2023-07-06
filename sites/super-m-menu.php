@@ -1,7 +1,6 @@
 <?php
 session_start();
 require '../engine/check-super-login.php';
-include '../engine/btn-logout.php';
 ?>
 
 <!doctype html>
@@ -31,9 +30,6 @@ include '../engine/btn-logout.php';
         <a href="../sites/add-exercise.php" class="btn btn-lg bg-success rounded-5 text-white w-100 shadow-lg" href="../sites/add-exercise.php">Add Exercises</a>
         <a href="../sites/bedienungshilfe.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" href="../sites/user-manual.php">Help</a>
         <a href="../sites/teacher-m-menu.php" class="btn btn-lg bg-danger rounded-5 text-white w-100 shadow-lg" href="../sites/teacher-m-menu.php">back to main menu</a>
-        <form method="POST">
-          <button class="btn btn-lg btn-danger" name="logout">Log out</button>
-        </form>
       </div>
     </div>
   </div>

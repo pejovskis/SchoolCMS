@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $hinweis = $_POST['hinweis'];
   $fach = $_POST['fach'];
   $kategorie = $_POST['kategorie'];
-  $new_kategorie = $_POST['new-kategorie'];
-  $new_fach = $_POST['new-fach'];
+  $new_kategorie = isset($_POST['new-kategorie']) ? $_POST['new-kategorie'] : null;
+  $new_fach = isset($_POST['new-fach']) ? $_POST['new-fach'] : null;
   $current_date = date('Y-m-d');
   
   // Retrieve the file details

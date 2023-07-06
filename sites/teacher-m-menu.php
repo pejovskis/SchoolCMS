@@ -36,8 +36,8 @@ include '../engine/check-super-user.php';
         <a href="../sites/add-exercise.php" class="btn btn-lg bg-success rounded-5 text-white w-100 shadow-lg" href="">Add Exercises</a>
         <a href="../sites/user-manual.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" href="">Help</a>
         <a href="../sites/about.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" href="">About</a>
-        <form method="POST">
-          <button class="btn btn-lg btn-danger" name="logout">Log out</button>
+        <form class="w-100" method="POST">
+            <button class="btn btn-lg btn-danger w-100 shadow-lg rounded-5" name="logout">Log out</button>
         </form>
       </div>
     </div>

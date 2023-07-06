@@ -27,11 +27,11 @@
         </div>
         
         <div class="container-fluid w-100 d-flex flex-column row-gap-4 align-items-center bg-light">
-          <a href="exercises.php" class="btn btn-lg bg-success rounded-5 text-white w-100 shadow-lg">Show Exercises</a>
+          <a href="exercises.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg">Show Exercises</a>
           <a href="user-manual.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg">Help</a>
           <a href="about.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" >About</a>
-          <form method="POST">
-            <button class="btn btn-lg btn-danger" name="logout">Log out</button>
+          <form class="w-100" method="POST">
+            <button class="btn btn-lg btn-danger w-100 shadow-lg rounded-5" name="logout">Log out</button>
         </form>
         <?php 
             require '../engine/btn-logout.php';

@@ -68,10 +68,8 @@
           <div class="form-check">
           </div>
           <div class="container m-0 d-flex justify-content-around">
-            <button class="btn btn-danger">
-              <a href="teacher-m-menu.php" style="text-decoration: none; color: white;"> cancel </a>
-            </button>
-            <button name="submit" type="submit" class="btn btn-primary">upload</button>
+            <a class="btn btn-danger w-25" href="teacher-m-menu.php" style="text-decoration: none; color: white;"> cancel </a>
+            <button name="submit" type="submit" class="btn btn-primary w-25">upload</button>
             <?php 
           require '../engine/add-exercise-content.php';
           ?>
