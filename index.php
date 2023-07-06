@@ -15,14 +15,14 @@
         
     <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center">
       
-      <div class="container-fluid d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-light menu-div">
+      <div class="container-fluid d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-dark menu-div">
 
         <div class="container d-flex justify-content-center mb-5">
-          <h1>Menu</h1> 
+          <h1 class="text-white">Menu</h1> 
           <hr>
         </div>
         
-        <div class="container-fluid w-100 d-flex flex-column row-gap-4 align-items-center bg-light">
+        <div class="container-fluid w-100 d-flex flex-column row-gap-4 align-items-center">
           <a href="sites/login-menu.php" class="btn btn-lg bg-warning rounded-5 text-dark w-100 shadow-lg">Log In</a>
           <a href="sites/user-manual.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg">Help</a>
         </div>

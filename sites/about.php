@@ -11,10 +11,10 @@
     <link href="../css/fe-style-1.css" rel="stylesheet">
   </head>
   <body>
-    <div class="container-fluid w-100 vh-100 d-flex flex-column justify-content-center align-items-center">
-        <div class="container d-flex flex-column w-100 h-75 justify-content-center align-items-center border border-5 bg-light p-5">
+    <div class="container-fluid w-100 vh-100 d-flex flex-column justify-content-center align-items-center text-white">
+        <div class="container d-flex flex-column w-100 h-75 justify-content-center align-items-center border border-5 bg-dark p-5">
         <h1 class="h1 mb-5">App - About (Fake-App für Testzwecke)</h1>
-            <textarea class="form-control h-100 text-center">
+            <textarea class="form-control h-100 text-center bg-dark text-white">
     
             Titel: "DBManager - Eine revolutionäre App zur Verwaltung von Bildungsdaten"
 

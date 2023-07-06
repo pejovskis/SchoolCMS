@@ -18,13 +18,13 @@ include '../engine/add-subject.php';
 
 <body>
 
-  <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center">
-    <div class="container d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-light menu-div">
+  <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center text-white">
+    <div class="container d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-dark menu-div">
       <div class="container d-flex justify-content-center mb-5">
         <h1>Add Subject</h1>
       </div>
       <div class="container w-100 d-flex flex-column row-gap-4 align-items-center">
-        <form method="post">
+        <form method="post" class="w-100">
           <div class="mb-3">
             <label for="fach" class="form-label">New Subject: </label>
             <input name="fach" type="text" class="form-control">

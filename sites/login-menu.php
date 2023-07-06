@@ -13,14 +13,14 @@
   </head>
   <body>
 
-  <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center">
+  <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center text-white">
       <div class="container d-flex flex-column justify-content-center align-content-center p-5 rounded-5 menu-div">
-        <div class="container d-flex justify-content-center mb-5 bg-opacity-25">
-          <h1 class="display-4 text-white">Log In</h1> 
+        <div class="container d-flex justify-content-center mb-5">
+          <h1 class="display-4">Log In</h1> 
         </div>
         <div class="container w-100 d-flex flex-column row-gap-4 align-items-center">
             <form method="post"> 
-              <div class="container shadow-lg p-5 border rounded-5 bg-light">
+              <div class="container shadow-lg p-5 rounded-5 bg-dark">
                 <div class="mb-3 p-3">
                     <label for="email" class="form-label">Email address</label>
                     <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

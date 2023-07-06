@@ -18,8 +18,8 @@
 
 <body>
 
-  <div class="container-fluid vh-100 w-100 d-flex flex-column justify-content-center align-items-center">
-    <div class="container w-75 bg-light p-5 rounded-5">
+  <div class="container-fluid vh-100 w-100 d-flex flex-column justify-content-center align-items-center text-white">
+    <div class="container w-75 bg-dark p-5 rounded-5">
     <h1 class="text-center mb-5"> Add Exercise </h1>
       <form method="post" enctype="multipart/form-data">
         <div class="form-group">

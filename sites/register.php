@@ -16,13 +16,13 @@ require '../engine/super-new-user-register.php';
 
 <body>
 
-  <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center">
-    <div class="container d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-light menu-div">
+  <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center text-white">
+    <div class="container d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-dark menu-div">
       <div class="container d-flex justify-content-center mb-5">
         <h1>Add New User</h1>
       </div>
       <div class="container w-100 d-flex flex-column row-gap-4 align-items-center">
-        <form method="post">
+        <form method="post" class="w-100">
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
             <input name="email" type="email" class="form-control">
@@ -42,9 +42,9 @@ require '../engine/super-new-user-register.php';
           <div class="mb-3">
             <label for="status-level" class="form-label">Status Level</label>
             <input name="status-level" type="number" class="form-control" id="exampleInputPassword1">
-            <div id="emailHelp" class="form-text">1. Student;<br>2. Teacher; <br>3. Super Admin</div>
+            <div id="emailHelp" class="form-text text-white">1. Student;<br>2. Teacher; <br>3. Super Admin</div>
           </div>
-          <div class="container-fluid d-flex justify-content-around mt-5">
+          <div class="container-fluid d-flex justify-content-around mt-5 w-100">
             <a class="btn btn-lg btn-danger" href="../sites/super-m-menu.php">abbrechen</a>
             <input class="btn btn-lg btn-primary" name="submit" type="submit" value="Add User">
           </div>

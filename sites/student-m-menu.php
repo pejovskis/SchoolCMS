@@ -15,18 +15,18 @@
   </head>
   <body>
         
-    <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center">
+    <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center text-white">
       
-      <div class="container-fluid d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-light menu-div">
+      <div class="container-fluid d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-dark menu-div">
 
         <div class="container d-flex flex-column align-items-center mb-5">
           <?php 
-            echo '<h1 class="bg-dark text-white p-3 rounded-5">Student Main Menu</h1>' . '<h2> Logged in as: </h2>' . '<h3>' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '</h3>';
+            echo '<h1 class="bg-dark text-white p-3 rounded-5">Student Main Menu</h1>' . '<h2> Logged in as: </h2>' . '<h3>' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '</h3> <p style="font-weight: bold; font-size: 1.3rem;"> - student - </p>';
             ?>
           <hr>
         </div>
         
-        <div class="container-fluid w-100 d-flex flex-column row-gap-4 align-items-center bg-light">
+        <div class="container-fluid w-100 d-flex flex-column row-gap-4 align-items-center bg-dark">
           <a href="exercises.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg">Show Exercises</a>
           <a href="user-manual.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg">Help</a>
           <a href="about.php" class="btn btn-lg bg-primary rounded-5 text-white w-100 shadow-lg" >About</a>

@@ -13,10 +13,10 @@ session_start();
 </head>
 
 <body>
-  <div class="container-fluid w-100 vh-100 d-flex flex-column justify-content-center align-items-center">
-    <div class="container d-flex flex-column w-100 h-75 justify-content-center align-items-center border border-5 bg-light p-5">
+  <div class="container-fluid w-100 vh-100 d-flex flex-column justify-content-center align-items-center text-white">
+    <div class="container d-flex flex-column w-100 h-75 justify-content-center align-items-center border border-5 bg-dark p-5">
       <h1 class="h1 mb-5">App-Bedienungshilfe (Fake-App für Testzwecke)</h1>
-      <textarea class="form-control h-100 text-center">
+      <textarea class="form-control h-100 text-center bg-dark text-white">
 Willkommen zur App-Bedienungshilfe! Diese spezielle App wurde entwickelt, 
 um Benutzerinteraktionen zu simulieren und Testumgebungen für verschiedene Szenarien bereitzustellen. 
 Bitte beachten Sie, dass dies eine fiktive App ist und keine echte Funktionalität bietet. 

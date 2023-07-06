@@ -19,11 +19,24 @@ include '../engine/check-super-user.php';
 
 <body>
 
-  <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center">
-    <div class="container-fluid d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-light menu-div">
+  <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center text-white">
+    <div class="container-fluid d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-dark menu-div">
       <div class="container d-flex flex-column justify-content-center align-items-center mb-5">
         <?php
-          echo '<h1 class="bg-dark text-white p-3 rounded-5">Teacher Main Menu</h1>' . '<h2> Logged in as: </h2>' . '<h3>' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '</h3>';
+          $status_level = $_SESSION['status_level'];
+          $status = '';
+          switch($status_level){
+            case 1:
+              $status = 'student';
+              break;
+            case 2:
+              $status = 'teacher';
+              break;
+            case 9:
+              $status = 'God';
+              break;
+          }
+          echo '<h1 class="bg-dark text-white p-3 rounded-5">Teacher Main Menu</h1>' . '<h2> Logged in as: </h2>' . '<h3>' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '</h3> <p style="font-weight: bold; font-size: 1.3rem;"> - ' . $status . ' - </p>';
         ?>
       </div>
       <div class="container-fluid w-100 d-flex flex-column row-gap-4 align-items-center">

@@ -17,8 +17,8 @@ require '../engine/check-super-login.php';
 
 <body>
 
-  <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center">
-    <div class="container-fluid d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-light menu-div">
+  <div class="container-fluid w-100 vh-100 d-flex justify-content-center align-items-center text-white">
+    <div class="container-fluid d-flex flex-column justify-content-center align-content-center p-5 rounded-5 bg-dark menu-div">
       <div class="container d-flex justify-content-center mb-5">
         <h1>God Mode</h1>
       </div>
