@@ -29,8 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['status_level'] = $row['status_level'];
                 $currUserLevel = intval($row['status_level']);
 
-                echo '<script>alert(' . json_encode($currUserLevel) . ');</script>';
-
                 switch($currUserLevel) {
                     case 1:
                         header('Location: ../sites/student-m-menu.php');
