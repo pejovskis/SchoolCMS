@@ -67,10 +67,10 @@ checkIfEditPosible($row);
             <button class="btn btn-danger">
               <a href="../sites/main-menu.php" style="text-decoration: none; color: white;"> cancel </a>
             </button>
-            <button name="submit" type="submit" class="btn btn-primary">save changes</button>
+            <button name="submit" type="submit" value="update" class="btn btn-primary">save changes</button>
+            <?php btnDeleteExercise(); ?>
           </div>
         </div>
-        
       </form>
     </div>
   </div>

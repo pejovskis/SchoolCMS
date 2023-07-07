@@ -30,7 +30,7 @@
                     <input name="category" type="text" class="form-control">
                   </div>
                   <div class="container-fluid d-flex justify-content-around mt-5">
-                  <a class="btn btn-lg btn-danger" href="../sites/super-m-menu.php">abbrechen</a>
+                  <a class="btn btn-lg btn-danger" href="../sites/main-menu.php">abbrechen</a>
                     <button type="submit" class="btn btn-lg btn-primary">add</button>
                   </div>   
                   <?php addCategoryToDb(); ?>

@@ -1,5 +1,9 @@
 <?php
  session_start();
+
+ require 'engine/functions.php';
+ redirectLoggedUser();
+
 ?>
 
 <!doctype html>

@@ -51,13 +51,6 @@
         echo '<a class="btn bg-danger text-white" href="' . $link . '">back</a>';
     }
 
-    //Btn to delete existing exercise, only if the logged user personally added it. 
-    //Exception: Super User, he can delete everything
-
-    function  asd(){
-
-    }
-
     function deleteExerciseContent($exerciseId) {
         require '../engine/db-conn-aufgabe.php';
         
@@ -67,7 +60,6 @@
         $stmt->execute();
         $conn->close();
     }
-    
     
     function btnDeleteExercise() {
         require '../engine/db-conn-aufgabe.php';
@@ -84,19 +76,11 @@
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 if ($_SESSION['id'] === $row['added_by'] || $_SESSION['status_level'] > 2) {
-                    echo '<form method="POST">
-                        <button class="btn btn-danger" name="delete"> DELETE </button>
-                        <?php 
-                            deleteExerciseContent(' . $exerciseId . ');
-                        ?>
-                    </form>';
+                    echo '<button class="btn btn-danger" name="delete" type="submit" value="delete"> DELETE </button>';
                 }
             }
         }
     }
-    
-
-    
 
     function addCategoryToDb() {
 
@@ -122,28 +106,28 @@
 
     }
 
-    function addSubjectToDb() {
+    function addSubjectToDb(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //take -fach- from form
-        $fach = $_POST['fach'];
+            //take -fach- from form
+            $fach = $_POST['fach'];
 
-        require 'db-conn-aufgabe.php';
+            require 'db-conn-aufgabe.php';
 
-        //insert new -fach- into db
-        $query = "INSERT INTO fach (name) VALUES (?)";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, 's', $fach);
+            //insert new -fach- into db
+            $query = "INSERT INTO fach (name) VALUES (?)";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, 's', $fach);
 
-        //Throw out alert status
-        try {
-        mysqli_stmt_execute($stmt);
-        echo '<script>alert("Success!");</script>';
-        } catch(Throwable $e) {
-        echo '<script>alert("Failed.");</script>';
-        }
+            //Throw out alert status
+            try {
+                mysqli_stmt_execute($stmt);
+                echo '<script>alert("Success!");</script>';
+            } catch (Throwable $e) {
+                echo '<script>alert("Failed.");</script>';
+            }
 
-        mysqli_close($conn);
-        }
+            mysqli_close($conn);
+            }
     }
 
     function addExerciseContentToDb() {
@@ -266,28 +250,18 @@
     $kategorieOptions = [];
     pullCategoryFromDb($kategorieOptions);
 
-    function addSubject() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //take -fach- from form
-            $fach = $_POST['fach'];
-          
-            require 'db-conn-aufgabe.php';
-          
-          //insert new -fach- into db
-          $query = "INSERT INTO fach (name) VALUES (?)";
-          $stmt = mysqli_prepare($conn, $query);
-          mysqli_stmt_bind_param($stmt, 's', $fach);
-          
-          //Throw out alert status
-          try {
-            mysqli_stmt_execute($stmt);
-            echo '<script>alert("Success!");</script>';
-          } catch(Throwable $e) {
-            echo '<script>alert("Failed.");</script>';
-          }
-          
-          mysqli_close($conn);
-          }
+    function checkUserLogin() {
+        if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function redirectLoggedUser() {
+        if(checkUserLogin()) {
+            header("Location: ../sites/main-menu.php");
+        }
     }
 
     //Check if authorized user is logged in
