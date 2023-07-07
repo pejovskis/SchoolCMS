@@ -67,7 +67,7 @@
           <div class="form-check">
           </div>
           <div class="container m-0 d-flex justify-content-around">
-            <a class="btn btn-danger w-25" href="teacher-m-menu.php" style="text-decoration: none; color: white;"> cancel </a>
+            <a class="btn btn-danger w-25" href="main-menu.php" style="text-decoration: none; color: white;"> cancel </a>
             <button name="submit" type="submit" class="btn btn-primary w-25">upload</button>
             <?php 
             addExerciseContentToDb();

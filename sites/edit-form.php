@@ -1,10 +1,8 @@
 <?php
 session_start();
-require '../engine/check-login.php';
-if($_SESSION['id'] != $row['added_by'] || $_SESSION['status_level'] < 2) {
-    header('Location: ../sites/exercises.php');
-}
-require '../engine/btn-delete-exercise.php';
+require '../engine/functions.php';
+redirectCheckUserLogIn();
+checkIfEditPosible($row);
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,12 +20,12 @@ require '../engine/btn-delete-exercise.php';
 
 <div class="container-fluid vh-100 w-100 d-flex flex-column justify-content-center align-items-center">
     <div class="container w-75 bg-light p-5 rounded-5">
-    <h1 class="text-center mb-5"> Edit Exercise id:<?php echo $row['id']; ?> </h1>
+    <h1 class="text-center mb-5"> Edit Exercise id:<?php echo $row['id']; ?> </h1><!-- check this-->
     <form method="POST" action="update.php">
         <div class="form-group">
         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
         <label for="name" type="text">Name:</label>
-        <input type="text" name="name" class="form-control" value="<?php echo $row['name']; ?>">
+        <input type="text" name="aufgabe-name" class="form-control" value="<?php echo $row['name']; ?>">
         <label for="beschreibung">Description</label>
         <textarea class="form-control" type="text" name="beschreibung" placeholder="<?php echo $row['beschreibung']; ?>"></textarea>
           <label for="hinweis">Hint</label>
@@ -36,19 +34,14 @@ require '../engine/btn-delete-exercise.php';
             <label for="fach">Subject</label>
             <select name="fach" class="form-control" id="exampleFormControlSelect1">
               <option>Select Subject</option>
-              <?php
-              require '../engine/add-exercise-pull-subject.php';
+              <?php 
+                filterSubject();
               ?>
             </select>
           </div>
           <?php
-          require 'check-super-user.php';
           if (superCheck()) {
-            echo '<div class="form-group">
-          <label for="new-fach">New Subject</label>
-          <input name="new-fach" type="text" class="form-control"
-            placeholder="Create New Subject">
-        </div>';
+            displayNewSubjectField();
           }
           ?>
 
@@ -57,9 +50,13 @@ require '../engine/btn-delete-exercise.php';
             <select name="kategorie" class="form-control" id="exampleFormControlSelect1">
               <option>Select Category</option>
               <?php
-              require '../engine/add-exercise-pull-category.php';
+                filterCategory();
+                
               ?>
             </select>
+            <?php 
+              displayNewCategoryField();
+            ?>
           </div>
           <div class="form-group">
             <label for="excercise-file">Upload ONLY PDF Files !</label>
@@ -69,15 +66,13 @@ require '../engine/btn-delete-exercise.php';
           </div>
           <div class="container m-0 d-flex justify-content-around">
             <button class="btn btn-danger">
-              <a href="../sites/teacher-m-menu.php" style="text-decoration: none; color: white;"> cancel </a>
+              <a href="../sites/main-menu.php" style="text-decoration: none; color: white;"> cancel </a>
             </button>
             <button name="submit" type="submit" class="btn btn-primary">save changes</button>
-            <?php 
-            require '../engine/add-exercise-content.php';
-          ?>
           </div>
         </div>
       </form>
+      <?php btnDeleteExercise() ?>
     </div>
   </div>
 

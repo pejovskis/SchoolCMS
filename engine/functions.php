@@ -53,51 +53,50 @@
 
     //Btn to delete existing exercise, only if the logged user personally added it. 
     //Exception: Super User, he can delete everything
+
+    function  asd(){
+
+    }
+
+    function deleteExerciseContent($exerciseId) {
+        require '../engine/db-conn-aufgabe.php';
+        
+        // Perform the delete operation
+        $query = "DELETE FROM aufgabe WHERE id = " . $exerciseId;
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $conn->close();
+    }
+    
+    
     function btnDeleteExercise() {
         require '../engine/db-conn-aufgabe.php';
-
         if (isset($_GET['id'])) {
             $exerciseId = $_GET['id'];
-
+    
             // Fetch data for $row from the database
             $query = "SELECT * FROM aufgabe WHERE id = ?";
             $stmt = $conn->prepare($query);
             $stmt->bind_param("i", $exerciseId);
             $stmt->execute();
             $result = $stmt->get_result();
-
+    
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 if ($_SESSION['id'] === $row['added_by'] || $_SESSION['status_level'] > 2) {
                     echo '<form method="POST">
-                        <button class="btn btn-danger" name="delete" type="submit"> DELETE </button>
+                        <button class="btn btn-danger" name="delete"> DELETE </button>
+                        <?php 
+                            deleteExerciseContent(' . $exerciseId . ');
+                        ?>
                     </form>';
                 }
             }
         }
-
-        if (isset($_POST['delete'])) {
-            $exerciseId = $_GET['id'];
-
-            // Perform the delete operation
-            $query = "DELETE FROM aufgabe WHERE id = ?";
-            $stmt = $conn->prepare($query);
-            $stmt->bind_param("i", $exerciseId);
-            $stmt->execute();
-
-            // Check if the delete operation was successful
-            if ($stmt->affected_rows > 0) {
-                // Delete successful
-                echo "<script>alert('Exercise deleted successfully!') </script>";
-                echo '<script>window.setTimeout(function() { window.location.href = "../sites/exercises.php"; }, 100);</script>';
-            } else {
-                // Delete failed
-                echo "Failed to delete row.";
-            }
-        }
-
-    $conn->close();
     }
+    
+
+    
 
     function addCategoryToDb() {
 
@@ -210,6 +209,7 @@
             }
             
             }
+        
 
     }
 
@@ -525,6 +525,28 @@
           <label for="new-fach">New Subject</label>
           <input name="new-fach" type="text" class="form-control"
             placeholder="Create New Subject">
+        </div>';
+    }
+
+    function checkIfEditPosible($row) {
+        if($_SESSION['id'] != $row['added_by'] || $_SESSION['status_level'] < 2) {
+            header('Location: exercises.php');
+        } 
+    }
+
+    function displayNewSubjectField() {
+        echo '<div class="form-group">
+          <label for="new-fach">New Subject</label>
+          <input name="new-fach" type="text" class="form-control"
+            placeholder="Create New Subject">
+        </div>';
+    }
+
+    function displayNewCategoryField() {
+        echo '<div class="form-group">
+          <label for="new-category">New Category</label>
+          <input name="new-category" type="text" class="form-control"
+            placeholder="Create New Category">
         </div>';
     }
 

@@ -20,9 +20,17 @@ if ($result && mysqli_num_rows($result) > 0) {
   while (ob_get_level()) {
       ob_end_clean();
   }
-  echo $pdfData;
+  echo '<script>
+    const response = confirm("Do you like to download ' . $exercise_name . '?");
+    if (response) {
+        window.location.href = "' . $pdfData . '";
+    } else {
+        window.location.href = "../sites/exercises.pdf";
+    }
+</script>';
+
 } else {
-  echo "Exercise not found.";
+  echo '<script>alert("Exercise not found.")</script>';
 }
 
 // Close the database connection (optional)

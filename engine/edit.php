@@ -15,8 +15,8 @@ if (isset($_GET['id'])) {
   $row = mysqli_fetch_assoc($result);
 
   // Include the file containing the form code
-  require 'edit-form.php';
+  require '../sites/edit-form.php';
 } else {
   echo "No ID parameter found.";
 }
-?>
+
