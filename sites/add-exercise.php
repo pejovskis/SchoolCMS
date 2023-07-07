@@ -1,7 +1,6 @@
 <?php
   session_start();
-  require '../engine/check-login.php';
-  include '../engine/check-super-user.php';
+  require '../engine/functions.php';
 ?>
 
 <!doctype html>
@@ -34,17 +33,15 @@
             <select name="fach" class="form-control" id="exampleFormControlSelect1">
               <option>Select Subject</option>
               <?php
-              require '../engine/add-exercise-pull-subject.php';
+              $fachOptions = [];
+              pullSubjectFromDb($fachOptions);
+              filterSubject();
               ?>
             </select>
           </div>
           <?php
           if (superCheck()) {
-            echo '<div class="form-group">
-          <label for="new-fach">New Subject</label>
-          <input name="new-fach" type="text" class="form-control"
-            placeholder="Create New Subject">
-        </div>';
+            inputAddSubject();
           }
           ?>
 
@@ -53,7 +50,9 @@
             <select name="kategorie" class="form-control" id="exampleFormControlSelect1">
               <option>Select Category</option>
               <?php
-              require '../engine/add-exercise-pull-category.php';
+              $kategorieOptions = [];
+              pullCategoryFromDb($kategorieOptions);
+              filterCategory();
               ?>
             </select>
           </div>
@@ -71,7 +70,7 @@
             <a class="btn btn-danger w-25" href="teacher-m-menu.php" style="text-decoration: none; color: white;"> cancel </a>
             <button name="submit" type="submit" class="btn btn-primary w-25">upload</button>
             <?php 
-          require '../engine/add-exercise-content.php';
+            addExerciseContentToDb();
           ?>
           </div>
         </div>

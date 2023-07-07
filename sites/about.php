@@ -1,5 +1,6 @@
 <?php 
   session_start();
+  require '../engine/functions.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -45,7 +46,7 @@ Genießen Sie die Vorteile einer effizienten und organisierten Datenverwaltung m
         </div>
         <div class="m-5">
         <?php
-                require '../engine/btn-back-to-mm.php';
+                btnBackToMainMenu();
             ?>
         </div>
         </div>

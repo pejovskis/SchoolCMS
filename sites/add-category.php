@@ -1,7 +1,6 @@
 <?php 
   session_start();
-  require '../engine/check-super-login.php';
-  include '../engine/add-category.php';
+  require '../engine/functions.php';
 ?>
 
 <!doctype html>
@@ -34,6 +33,7 @@
                   <a class="btn btn-lg btn-danger" href="../sites/super-m-menu.php">abbrechen</a>
                     <button type="submit" class="btn btn-lg btn-primary">add</button>
                   </div>   
+                  <?php addCategoryToDb(); ?>
                 </form>
           </div>
   

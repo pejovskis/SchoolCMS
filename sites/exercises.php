@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../engine/db-conn-aufgabe.php';
+require '../engine/functions.php';
 ?>
 
 <!doctype html>
@@ -27,30 +27,26 @@ require '../engine/db-conn-aufgabe.php';
       <div class="container-fluid d-flex flex-wrap justify-content-around align-items-center p-3 border-bottom">
         <h1 class="text-white">Filter:</h1>
         <?php
-        require '../engine/exercise-filter.php';
+        exerciseFilter();
         ?>
         <form class="d-flex flex-wrap justify-content-around align-items-center" method="get">
           <div class="form-group col-md-auto col-12 mx-md-2 mb-md-0 mb-3">
-            <select class="form-control shadow-lg" name="fach" id="fachSelect">
-              <option value="">Select subject</option>
-              <?php foreach ($fachOptions as $fachOption) : ?>
-                <option value="<?php echo $fachOption; ?>"><?php echo $fachOption; ?></option>
-              <?php endforeach; ?>
-            </select>
+              <select class="form-control shadow-lg" name="fach" id="fachSelect">
+                  <option value="">Select subject</option>
+                  <?php filterSubject(); ?>
+              </select>
           </div>
           <div class="form-group col-md-auto col-12 mx-md-2 mb-md-0 mb-3">
-            <select class="form-control shadow-lg" name="kategorie" id="kategorieSelect">
-              <option value="">Select category</option>
-              <?php foreach ($kategorieOptions as $kategorieOption) : ?>
-                <option value="<?php echo $kategorieOption; ?>"><?php echo $kategorieOption; ?></option>
-              <?php endforeach; ?>
-            </select>
+              <select class="form-control shadow-lg" name="kategorie" id="kategorieSelect">
+                  <option value="">Select category</option>
+                  <?php filterCategory(); ?>
+              </select>
           </div>
           <div class="col-md-auto col-12 mx-md-2 mb-md-0 mb-3">
-            <button type="submit" class="btn btn-primary shadow-lg">Filter</button>
-            <?php
-            require '../engine/btn-back-to-mm.php';
-            ?>
+              <button type="submit" class="btn btn-primary shadow-lg">Filter</button>
+              <?php
+              btnBackToMainMenu();
+              ?>
           </div>
         </form>
       </div>
@@ -70,7 +66,6 @@ require '../engine/db-conn-aufgabe.php';
           <th scope="col">Added From</th>'
           <th scope="col">PDF File</th>
           <?php 
-            include '../engine/check-super-user.php';
             if(teacherCheck() || superCheck()) {
               echo '<th scope="col">Edit Excercise</th>';
             }
@@ -79,8 +74,8 @@ require '../engine/db-conn-aufgabe.php';
       </thead>
       <tbody>
         <?php
-        // Include the updated code from show-exercises.php
-        require '../engine/display-exercises.php';
+          // Include the updated code from show-exercises.php
+          displayExercises();
         ?>
       </tbody>
     </table>

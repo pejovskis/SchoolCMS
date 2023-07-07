@@ -1,5 +1,6 @@
 <?php
 session_start();
+require '../engine/functions.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -55,7 +56,7 @@ Vielen Dank für Ihre Teilnahme!</textarea>
     </div>
     <div class="m-5">
       <?php
-      require '../engine/btn-back-to-mm.php';
+      btnBackToMainMenu();
       ?>
     </div>
   </div>

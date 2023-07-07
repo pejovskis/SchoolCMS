@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../engine/super-new-user-register.php';
+require '../engine/functions.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -45,9 +45,12 @@ require '../engine/super-new-user-register.php';
             <div id="emailHelp" class="form-text text-white">1. Student;<br>2. Teacher; <br>3. Super Admin</div>
           </div>
           <div class="container-fluid d-flex justify-content-around mt-5 w-100">
-            <a class="btn btn-lg btn-danger" href="../sites/super-m-menu.php">abbrechen</a>
-            <input class="btn btn-lg btn-primary" name="submit" type="submit" value="Add User">
+            <a class="btn btn-lg btn-danger" href="../sites/super-m-menu.php">cancel</a>
+            <input class="btn btn-lg btn-primary" name="submit" type="submit" value="add User">
           </div>
+          <?php 
+            addNewUser();
+          ?>
         </form>
       </div>
     </div>

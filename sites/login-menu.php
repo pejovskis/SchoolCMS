@@ -1,6 +1,6 @@
 <?php
   session_start();
-  require '../engine/login.php';
+  require '../engine/functions.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,7 +36,10 @@
                     <a class="btn btn-lg btn-danger shadow-lg" href="../index.php">cancel</a>  
                     <button type="submit" class="btn btn-lg btn-primary shadow-lg">Log In</button>
                   </div>  
-              </div>         
+              </div>    
+              <?php 
+                userLogIn();
+              ?>     
               </form>
               
         </div>
