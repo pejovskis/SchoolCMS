@@ -51,7 +51,6 @@ checkIfEditPosible($row);
               <option>Select Category</option>
               <?php
                 filterCategory();
-                
               ?>
             </select>
             <?php 
@@ -71,8 +70,8 @@ checkIfEditPosible($row);
             <button name="submit" type="submit" class="btn btn-primary">save changes</button>
           </div>
         </div>
+        
       </form>
-      <?php btnDeleteExercise() ?>
     </div>
   </div>
 
