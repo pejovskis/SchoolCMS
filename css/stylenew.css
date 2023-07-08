@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+.div-bg {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.div-menu {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    padding: 50px 150px 50px 150px;
+    background-color: #222;
+    border-radius: 10px;
+    border: 1px solid rgba(206, 195, 195, 0.125);
+    box-shadow: 0 0 10px rgba(220, 220, 220, 0.3);;
+}
+
+.div-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 0 50px 0 50px;
+    border-radius: 10px;
+    border: 1px solid rgba(206, 195, 195, 0.125);
+    box-shadow: 0 0 10px rgba(220, 220, 220, 0.3);;    
+}
+
+.div-title p {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.div-title h1 {
+    font-size: 2rem;
+}
+.div-title h2 {
+    font-size: 1.8rem;
+}
+.div-title h3 {
+    font-size: 1.6rem;
+}
+.div-title h4 {
+    font-size: 1.4rem;
+}
+
+.div-menu textarea {
+    background-color: #221;
+    color: white;
+    padding: 30px;
+    font-size: 1.2rem;
+    width: 900px;
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 1px #222;
+}
+
+.div-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 50px 0 50px;
+    row-gap: 30px;
+}
+
+.btn-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 40px;
+    border: 1px solid rgba(206, 195, 195, 0.125);
+    border-radius: 10px;
+    box-shadow: 0 0 3px white;
+    background-color: rgb(252, 247, 240);
+    color: #222;
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.btn-menu:hover,
+.btn-cancel:hover,
+.btn-confirm:hover {
+    opacity: 0.7;
+}
+
+.btn-menu:active,
+.btn-cancel:active,
+.btn-confirm:active {
+    opacity: 0.3;
+    background-color: pink;
+}
+
+
+.btn-cancel,
+.btn-confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 35px;
+    border: 1px solid rgba(206, 195, 195, 0.125);
+    border-radius: 10px;
+    box-shadow: 0 0 2px white;
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.btn-cancel {
+    background-color: rgb(223, 27, 27);
+}
+
+.btn-confirm {
+    background-color: cyan;
+}
+
+.div-cancon {
+    display: flex;
+    flex-direction: row;
+    padding: 50px 50px 0 50px;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-login, 
+.div-login div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-login{
+    row-gap: 20px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.div-login label {
+    padding: 10px;
+}
+
+.div-login input {
+    height: 35px;
+    width: 316px;
+    font-size: 1.4rem;
+    padding: 5px;
+    border-radius: 10px;
+}
+.div-login select {
+    height: 49px;
+    width: 330px;
+    font-size: 1.4rem;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.div-login input:focus,
+.div-login select:focus {
+    outline: 2px solid rgba(2, 240, 200, 0.3);
+}
+
+.div-show-exercises {
+    color: white;
+    display: flex;
+}
+
+.form-filter select {
+    height: 35px;
+    width: 300px;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.form-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.table-dark {
+    background-color: #222;
+    color: white;
+    border-collapse: collapse;
+}
+
+.table-head th {
+    border-bottom: 1px solid white;
+    padding: 10px;
+}
+
+.table-row:nth-child(even) {
+    background-color: rgb(59, 58, 58);
+}
+
+.table-row td {
+    border-right: 1px solid white;
+    padding: 10px;
+}
+
+.table-row td:last-child {
+    border: none;
+}

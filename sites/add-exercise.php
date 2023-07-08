@@ -1,6 +1,6 @@
 <?php
-  session_start();
-  require '../engine/functions.php';
+session_start();
+require '../engine/functions.php';
 ?>
 
 <!doctype html>
@@ -9,78 +9,76 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dozenten Aufgaben Einfuegen</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/fe-style-1.css">
+  <title>SEM Add New Exercise</title>
+  <link rel="stylesheet" href="/css/stylenew.css">
 </head>
 
 <body>
 
-  <div class="container-fluid vh-100 w-100 d-flex flex-column justify-content-center align-items-center text-white">
-    <div class="container w-75 bg-dark p-5 rounded-5">
-    <h1 class="text-center mb-5"> Add Exercise </h1>
-      <form method="post" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="aufgabe-name">Excercise Name</label>
-          <input name="aufgabe-name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name here">
-          <label for="beschreibung">Description</label>
-          <textarea name="beschreibung" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter description here"></textarea>
-          <label for="hinweis">Hint</label>
-          <input name="hinweis" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Hint here">
-          <div class="form-group">
-            <label for="fach">Subject</label>
-            <select name="fach" class="form-control" id="exampleFormControlSelect1">
-              <option>Select Subject</option>
+  <div class="div-bg">
+    <div class="div-menu">
+      <div class="div-title">
+        <p> Add Exercise </p>
+      </div>
+      <div class="div-buttons">
+          <form method="post" enctype="multipart/form-data">
+            <div class="div-login">
+              <label for="aufgabe-name">Excercise Name</label>
+              <input name="aufgabe-name" type="text" placeholder="Enter Name here">
+              <label for="beschreibung">Description</label>
+              <textarea name="beschreibung" type="text" placeholder="Enter description here"></textarea>
+              <label for="hinweis">Hint</label>
+              <input name="hinweis" type="text" placeholder="Enter Hint here">
+              <div class="form-group">
+                <label for="fach">Subject</label>
+                <select name="fach">
+                  <option>Select Subject</option>
+                  <?php
+                  $fachOptions = [];
+                  pullSubjectFromDb($fachOptions);
+                  filterSubject();
+                  ?>
+                </select>
+              </div>
               <?php
-              $fachOptions = [];
-              pullSubjectFromDb($fachOptions);
-              filterSubject();
+              if (superCheck()) {
+                inputAddSubject();
+              }
               ?>
-            </select>
-          </div>
-          <?php
-          if (superCheck()) {
-            inputAddSubject();
-          }
-          ?>
 
-          <div class="form-group">
-            <label for="kategorie">Category</label>
-            <select name="kategorie" class="form-control" id="exampleFormControlSelect1">
-              <option>Select Category</option>
-              <?php
-              $kategorieOptions = [];
-              pullCategoryFromDb($kategorieOptions);
-              filterCategory();
-              ?>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="new-kategorie">New Kategorie</label>
-            <input name="new-kategorie" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="New Category">
-          </div>
-          <div class="form-group">
-            <label for="excercise-file">Upload ONLY PDF Files !</label>
-            <input name="excercise-file" type="file" class="form-control">
-          </div>
-          <div class="form-check">
-          </div>
-          <div class="container m-0 d-flex justify-content-around">
-            <a class="btn btn-danger w-25" href="main-menu.php" style="text-decoration: none; color: white;"> cancel </a>
-            <button name="submit" type="submit" class="btn btn-primary w-25">upload</button>
-            <?php 
-            addExerciseContentToDb();
-          ?>
-          </div>
-        </div>
-        
-      </form>
+              <div>
+                <label for="kategorie">Category</label>
+                <select name="kategorie">
+                  <option>Select Category</option>
+                  <?php
+                  $kategorieOptions = [];
+                  pullCategoryFromDb($kategorieOptions);
+                  filterCategory();
+                  ?>
+                </select>
+              </div>
+              <div>
+                <label for="new-kategorie">New Category</label>
+                <input name="new-kategorie" type="text" placeholder="New Category">
+              </div>
+              <div>
+                <label for="excercise-file">Upload ONLY PDF Files !</label>
+                <input id="btn-upload-file" name="excercise-file" type="file">
+              </div>
+            </div>
+            <div class="div-cancon">
+                <a class="btn-cancel" href="main-menu.php"> cancel </a>
+                <button name="submit" type="submit" class="btn-confirm">upload</button>
+                <?php
+                addExerciseContentToDb();
+                ?>
+              </div>
+          </form>
+      </div>
+
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  <script src="../js/script.js"></script>
 </body>
 
 </html>

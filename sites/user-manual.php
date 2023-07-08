@@ -8,16 +8,17 @@ require '../engine/functions.php';
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <link href="../css/fe-style-1.css" rel="stylesheet">
+  <title>SEM User Manual</title>
+  <link rel="stylesheet" href="../css/stylenew.css">
 </head>
 
 <body>
-  <div class="container-fluid w-100 vh-100 d-flex flex-column justify-content-center align-items-center text-white">
-    <div class="container d-flex flex-column w-100 h-75 justify-content-center align-items-center border border-5 bg-dark p-5">
-      <h1 class="h1 mb-5">App-Bedienungshilfe (Fake-App f체r Testzwecke)</h1>
-      <textarea class="form-control h-100 text-center bg-dark text-white">
+  <div class="div-bg">
+    <div class="div-menu">
+      <div class="div-title">
+        <p>User Manual</p>
+      </div>
+      <textarea>
 Willkommen zur App-Bedienungshilfe! Diese spezielle App wurde entwickelt, 
 um Benutzerinteraktionen zu simulieren und Testumgebungen f체r verschiedene Szenarien bereitzustellen. 
 Bitte beachten Sie, dass dies eine fiktive App ist und keine echte Funktionalit채t bietet. 
@@ -53,15 +54,13 @@ und werden nicht gespeichert. Verwenden Sie diese App-Bedienungshilfe ausschlie�
 f체r Test- und Schulungszwecke.
 
 Vielen Dank f체r Ihre Teilnahme!</textarea>
-    </div>
-    <div class="m-5">
-      <?php
-      btnBackToMainMenu();
-      ?>
+      <div class="div-buttons">
+            <?php
+            btnBackToMainMenu();
+            ?>
+      </div>    
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

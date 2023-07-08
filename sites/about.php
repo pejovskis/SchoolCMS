@@ -1,21 +1,24 @@
-<?php 
-  session_start();
-  require '../engine/functions.php';
+<?php
+session_start();
+require '../engine/functions.php';
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> About </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link href="../css/fe-style-1.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container-fluid w-100 vh-100 d-flex flex-column justify-content-center align-items-center text-white">
-        <div class="container d-flex flex-column w-100 h-75 justify-content-center align-items-center border border-5 bg-dark p-5">
-        <h1 class="h1 mb-5">App - About (Fake-App für Testzwecke)</h1>
-            <textarea class="form-control h-100 text-center bg-dark text-white">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About SEM</title>
+  <link rel="stylesheet" href="../css/stylenew.css">
+</head>
+
+<body>
+  <div class="div-bg">
+    <div class="div-menu">
+      <div class="div-title">
+        <p>About</p>
+      </div>
+      <textarea>
     
             Titel: "DBManager - Eine revolutionäre App zur Verwaltung von Bildungsdaten"
 
@@ -42,17 +45,13 @@ Durch die Verwendung von Verschlüsselung und sicheren Verbindungen wird die Ver
 Hinweis: Diese App ist eine fiktive Anwendung, die für Testzwecke erstellt wurde. Sie hat keine tatsächliche Funktionalität und speichert keine echten Daten. Sie wurde entwickelt, um Benutzerinteraktionen zu simulieren und die Verwaltung von Bildungsdaten zu demonstrieren.
 
 Genießen Sie die Vorteile einer effizienten und organisierten Datenverwaltung mit DBManager.</textarea>
-
-        </div>
-        <div class="m-5">
-        <?php
-                btnBackToMainMenu();
+<div class="div-buttons">
+            <?php
+            btnBackToMainMenu();
             ?>
-        </div>
-        </div>
-    
-        
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  </body>
+      </div>    
+    </div>
+  </div>
+</body>
+
 </html>

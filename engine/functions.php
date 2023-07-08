@@ -24,7 +24,7 @@
         echo '<h1 class="bg-dark text-white p-3 rounded-5">' . $statusName . '</h1>' .
          '<h2> Logged in as: </h2>' .
           '<h3>' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '</h3> 
-        <p style="font-weight: bold; font-size: 1.3rem;"> - ' . $status  . ' - </p>';
+        <h4> - ' . $status  . ' - </h4>';
     }
 
     //Display the log out Button
@@ -40,6 +40,7 @@
 
     //Back To Main Menu
     function btnBackToMainMenu() {
+
         $link = '../../index.php';
 
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
@@ -48,9 +49,9 @@
         } 
         }
 
-        echo '<a class="btn bg-danger text-white" href="' . $link . '">back</a>';
+        echo '<a class="btn-cancel" href="' . $link . '">back</a>';
     }
-
+    
     function deleteExerciseContent($exerciseId) {
         require '../engine/db-conn-aufgabe.php';
         
@@ -76,7 +77,7 @@
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 if ($_SESSION['id'] === $row['added_by'] || $_SESSION['status_level'] > 2) {
-                    echo '<button class="btn btn-danger" name="delete" type="submit" value="delete"> DELETE </button>';
+                    echo '<button class="btn-cancel" name="delete" type="submit" value="delete"> DELETE </button>';
                 }
             }
         }
@@ -324,7 +325,7 @@
 
         //Generate html rows
         while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
+        echo "<tr class='table-row'>";
         echo "<th scope='row'>" . $row['id'] . "</th>";
         echo "<td>" . $row['name'] . "</td>";
         echo "<td>" . $row['beschreibung'] . "</td>";
@@ -334,9 +335,9 @@
         echo "<td>" . $row['add_date'] . "</td>";
         $added_by = intval($row['added_by']);
         echo "<td>" . getName($added_by) . "</td>";
-        echo "<td><a class='btn btn-sm bg-primary text-white' href='../engine/download.php?id=" . $row['id'] . "'>Download</a></td>";
+        echo "<td><a class='btn-confirm' href='../engine/download.php?id=" . $row['id'] . "'>Download</a></td>";
         if($_SESSION['id'] === $added_by || $_SESSION['status_level'] > 2) {
-            echo "<td><a class='btn btn-sm bg-success text-white' href='../engine/edit.php?id=" . $row['id'] . "'>Edit</a></td>";
+            echo "<td><a class='btn-cancel' href='../engine/edit.php?id=" . $row['id'] . "'>Edit</a></td>";
         } else {
             echo "<td> No Access </td>";
         }
@@ -479,25 +480,25 @@
     }
 
     function btnAddExercise() {
-        echo '<a href="../sites/add-exercise.php" class="btn btn-lg bg-success rounded-5 text-white w-100 shadow-lg" href="">Add Exercises</a>';
+        echo '<a href="../sites/add-exercise.php" class="btn-menu" href="">Add Exercises</a>';
     }
 
     function btnAddUser() {
-        echo '<a href="../sites/register.php" class="btn btn-lg bg-warning rounded-5 w-100 shadow-lg" href="../sites/register.php">Add User</a>';
+        echo '<a href="../sites/register.php" class="btn-menu" href="../sites/register.php">Add User</a>';
     }
 
     function btnAddCategory() {
-        echo '<a href="../sites/add-category.php" class="btn btn-lg bg-success rounded-5 text-white w-100 shadow-lg" href="../sites/add-category.php">Add Category</a>';
+        echo '<a href="../sites/add-category.php" class="btn-menu" href="../sites/add-category.php">Add Category</a>';
     }
 
     function btnAddSubject() {
-        echo '<a href="../sites/add-subject.php" class="btn btn-lg bg-success rounded-5 text-white w-100 shadow-lg" href="../sites/add-fach.php">Add Subject</a>';
+        echo '<a href="../sites/add-subject.php" class="btn-menu" href="../sites/add-fach.php">Add Subject</a>';
     }
 
     function inputAddSubject() {
-        echo '<div class="form-group">
+        echo '<div>
           <label for="new-fach">New Subject</label>
-          <input name="new-fach" type="text" class="form-control"
+          <input name="new-fach" type="text"
             placeholder="Create New Subject">
         </div>';
     }
@@ -509,19 +510,13 @@
     }
 
     function displayNewSubjectField() {
-        echo '<div class="form-group">
-          <label for="new-fach">New Subject</label>
-          <input name="new-fach" type="text" class="form-control"
-            placeholder="Create New Subject">
-        </div>';
+        echo '<label for="new-fach">New Subject</label>
+          <input name="new-fach" type="text"
+            placeholder="Create New Subject">';
     }
 
     function displayNewCategoryField() {
-        echo '<div class="form-group">
-          <label for="new-category">New Category</label>
+        echo '<label for="new-category">New Category</label>
           <input name="new-category" type="text" class="form-control"
-            placeholder="Create New Category">
-        </div>';
+            placeholder="Create New Category">';
     }
-
-?>
