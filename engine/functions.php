@@ -485,61 +485,46 @@ function addNewUser()
 {
     require 'db-conn-userss.php';
 
-    if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['first-name']) && isset($_POST['last-name']) && isset($_POST['status-level'])) {
-        // Retrieve form data
-        $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $first_name = $_POST['first-name'];
-        $last_name = $_POST['last-name'];
-        $status_level = $_POST['status-level'];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Check if the form is submitted
 
-        // Check for empty fields
-        if (empty($email) || empty($password) || empty($first_name) || empty($last_name) || empty($status_level)) {
-            echo '<script>alert("Please fill in all required fields.")</script>';
-            exit;
-        }
+        if (isset($_POST['email']) &&
+            isset($_POST['password']) &&
+            isset($_POST['first-name']) &&
+            isset($_POST['last-name']) &&
+            isset($_POST['status-level'])) {
+            
+            // Form fields are set, proceed with the validation
+            
+            $email = $_POST['email'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $first_name = $_POST['first-name'];
+            $last_name = $_POST['last-name'];
+            $status_level = $_POST['status-level'];
 
-        // Check if a file was uploaded
-        if (isset($_FILES['profile-image']) && $_FILES['profile-image']['error'] === UPLOAD_ERR_OK) {
-            // Retrieve the file details
-            $image_file_name = $_FILES['profile-image']['name'];
-            $image_file_tmp = $_FILES['profile-image']['tmp_name'];
-            $image_file_type = $_FILES['profile-image']['type'];
-
-            // Read the file content
-            $image_data = file_get_contents($image_file_tmp);
-
-            // Insert the new user with the image data
-            $query = "INSERT INTO userss (email, password, first_name, last_name, status_level, user_photo) VALUES (?, ?, ?, ?, ?, ?)";
-            $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt, "sssssb", $email, $password, $first_name, $last_name, $status_level, $image_data);
-
-            if (mysqli_stmt_execute($stmt)) {
-                echo '<script>alert("New user registered successfully")</script>';
+            // Check for empty fields
+            if (empty($email) || empty($password) || empty($first_name) || empty($last_name) || empty($status_level)) {
+                echo '<script>alert("Please fill in all required fields.")</script>';
             } else {
-                echo '<script>alert("Error registering new user")</script>';
+                // Insert the new user in -users- sql
+                $query = "INSERT INTO userss (email, password, first_name, last_name, status_level) VALUES (?, ?, ?, ?, ?)";
+                $stmt = mysqli_prepare($conn, $query);
+                mysqli_stmt_bind_param($stmt, "sssss", $email, $password, $first_name, $last_name, $status_level);
+
+                if (mysqli_stmt_execute($stmt)) {
+                    echo '<script>alert("New user registered successfully")</script>';
+                } else {
+                    echo '<script>alert("Error registering new user")</script>';
+                }
             }
         } else {
-            // Insert the new user without an image
-            $query = "INSERT INTO userss (email, password, first_name, last_name, status_level) VALUES (?, ?, ?, ?, ?)";
-            $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt, "sssss", $email, $password, $first_name, $last_name, $status_level);
-
-            if (mysqli_stmt_execute($stmt)) {
-                echo '<script>alert("New user registered successfully")</script>';
-            } else {
-                echo '<script>alert("Error registering new user")</script>';
-            }
+            echo '<script>alert("Please fill all the fields!")</script>';
         }
-    } else {
-        echo '<script>alert("Please fill all the fields!")</script>';
     }
 
-    // Close the database connection
+    // Close the db connection
     mysqli_close($conn);
 }
-
-
 
 
 function btnAddExercise()
