@@ -31,7 +31,9 @@ checkIfEditPosible($row);
               <label for="name" type="text">Name:</label>
               <input type="text" name="aufgabe-name" value="<?php echo $row['name']; ?>">
               <label for="beschreibung">Description</label>
-              <textarea type="text" name="beschreibung" placeholder="<?php echo $row['beschreibung']; ?>"></textarea>
+              <div class="div-textarea">
+                <textarea type="text" name="beschreibung" placeholder="<?php echo $row['beschreibung']; ?>"></textarea>
+              </div>
               <label for="hinweis">Hint</label>
               <input name="hinweis" type="text" value="<?php echo $row['hinweis']; ?>">
               <label for="fach">Subject</label>
