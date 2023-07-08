@@ -26,7 +26,7 @@ checkIfEditPosible($row);
       <div class="div-buttons">
         <form method="POST" action="update.php">
           <div class="form-group">
-            <div class="div-login">
+            <div class="div-elements">
               <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
               <label for="name" type="text">Name:</label>
               <input type="text" name="aufgabe-name" value="<?php echo $row['name']; ?>">
