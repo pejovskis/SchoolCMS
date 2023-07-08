@@ -25,7 +25,6 @@
                 <div class="">
                     <label for="email" class="">Email address</label>
                     <input name="email" type="email">
-                    <!-- <small>This log in is private only. There are no real email adresses used in the proccess, and it's only for test purposes. To obtain account & password please contact the Developer</small> -->
                   </div>
                   <div class="">
                     <label for="password" class="form-label">Password</label>
