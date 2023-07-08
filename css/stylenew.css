@@ -1,51 +1,63 @@
+html {
+    padding: 0;
+    margin: 0;
+}
 body {
     margin: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-
 button {
+    background: transparent;
+    border: none;
     cursor: pointer;
 }
-
+label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(203, 238, 4, 0.7);
+    padding: 0 30px 3px 30px;
+    border-radius: 20px;
+}
+/* Full-Screen Cover */
 .div-bg {
     min-height: 100vh;
-    width: 100vw;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: black;
 }
-
+/* Menu */
 .div-menu {
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    padding: 50px 150px 50px 150px;
     background-color: #222;
-    border-radius: 10px;
-    border: 1px solid rgba(206, 195, 195, 0.125);
-    box-shadow: 0 0 10px rgba(220, 220, 220, 0.3);;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    padding: 50px 0px 50px 0px;
+    row-gap: 70px;
 }
-
+/* Title */
 .div-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
     color: white;
-    padding: 0 50px 0 50px;
-    border-radius: 10px;
-    border: 1px solid rgba(206, 195, 195, 0.125);
-    box-shadow: 0 0 10px rgba(220, 220, 220, 0.3);;    
+    border-radius: 20px;
+    padding: 50px 0 50px 0;
+    background-color: rgba(1, 1, 1, 0.2);
+    margin: 0 10px 0 10px;
 }
-
 .div-title p {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     margin: 0;
 }
-
 .div-title h1 {
     font-size: 2rem;
 }
@@ -54,85 +66,110 @@ button {
 }
 .div-title h3 {
     font-size: 1.6rem;
+    margin: 0;
 }
 .div-title h4 {
     font-size: 1.4rem;
+    margin: 0;
 }
-
-.div-menu textarea {
-    background-color: #221;
+/* Div Text Area */
+.div-textarea {
+    display: flex;
+    width: 90vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+}
+.div-textarea textarea {
+    width: 90%;
+    height: 55vh;
+    font-size: 1.3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #220;
     color: white;
-    padding: 30px;
-    font-size: 1.2rem;
-    width: 900px;
-    height: 500px;
-    border-radius: 10px;
-    box-shadow: 0 0 1px #222;
 }
-
+/* Buttons Layout */
 .div-buttons {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 50px 0 50px;
-    row-gap: 30px;
+    row-gap: 35px;
 }
-
 .btn-menu {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 400px;
-    height: 40px;
-    border: 1px solid rgba(206, 195, 195, 0.125);
-    border-radius: 10px;
-    box-shadow: 0 0 3px white;
-    background-color: rgb(58, 247, 0);
-    color: white;
-    text-shadow: 1px 0 1px #000, 0 -1px 1px #000, 0 1px 1px #000, -1px 0 1px #000;
+    background-color: transparent;
+    padding: 10px 30px 10px 30px;
     text-decoration: none;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+    color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-left: 2px solid rgba(7, 252, 28, 0.3);
+    border-right: 2px solid rgba(7, 252, 28, 0.3);
+    border-bottom: 2px solid rgba(7, 252, 28, 0.3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
-
-.btn-menu:hover,
-.btn-cancel:hover,
-.btn-confirm:hover {
-    opacity: 0.7;
+.btn-cancel {
+    border-left: 2px solid rgba(252, 4, 120, 0.3);
+    border-right: 2px solid rgba(252, 4, 120, 0.3);
+    border-bottom: 2px solid rgba(252, 4, 120, 0.3);
 }
-
-.btn-menu:active,
-.btn-cancel:active,
-.btn-confirm:active {
-    opacity: 0.3;
-    background-color: pink;
+.btn-confirm {
+    border-left: 2px solid rgba(7, 252, 101, 0.3);
+    border-right: 2px solid rgba(7, 252, 101, 0.3);
+    border-bottom: 2px solid rgba(7, 252, 101, 0.3);
 }
-
-
 .btn-cancel,
 .btn-confirm {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    height: 35px;
-    border: 1px solid rgba(206, 195, 195, 0.125);
-    border-radius: 10px;
-    box-shadow: 0 0 2px white;
-    color: white;
-    text-shadow: 1px 0 2px #000, 0 -1px 2px #000, 0 1px 2px #000, -1px 0 2px #000;
+    background-color: transparent;
+    padding: 10px 30px 10px 30px;
     text-decoration: none;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+    color: white;
+    text-shadow: 1px 0 1px #000, 0 -1px 1px #000, 0 1px 1px #000, -1px 0 1px #000;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
-
-.btn-cancel {
-    background-color: rgb(223, 27, 27);
+.btn-menu:hover {
+    opacity: 0.7;
+    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.5), 0 3px 5px rgba(0, 0, 0, 0.5);
+    border-top: 2px solid rgba(7, 252, 28, 0.3);
+    padding-top: 8px;
 }
-
-.btn-confirm {
-    background-color: cyan;
+.btn-cancel:hover {
+    opacity: 0.7;
+    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.5), 0 3px 5px rgba(0, 0, 0, 0.5);
+    border-top: 2px solid rgba(252, 4, 120, 0.3);
+    padding-top: 8px;
 }
-
+.btn-confirm:hover {
+    opacity: 0.7;
+    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.5), 0 3px 5px rgba(0, 0, 0, 0.5);
+    border-top: 2px solid rgba(7, 252, 101, 0.3);
+    padding-top: 8px;
+}
+.btn-menu:active,
+.btn-cancel:active,
+.btn-confirm:active {
+    opacity: 1;
+    transform: scale(1.4);
+    transition: transform 0.1s;
+}
+/* Cancel & Confirm Button Layout */
 .div-cancon {
     display: flex;
     flex-direction: row;
@@ -141,167 +178,102 @@ button {
     justify-content: center;
     align-items: center;
 }
-
-.div-login, 
-.div-login div {
+/* Elements Layout */
+.div-elements{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.div-login{
-    row-gap: 20px;
-    color: white;
+    row-gap: 30px;
     font-size: 1.5rem;
+    color: white;
 }
-
-.div-login label {
-    padding: 10px;
+/* Input, Select / Label Combination */
+.div-elements div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
 }
-
-.div-login input {
+.div-elements input {
     height: 35px;
     width: 316px;
     font-size: 1.4rem;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     border-radius: 10px;
 }
-.div-login select {
+.div-elements select {
     height: 49px;
     width: 330px;
     font-size: 1.4rem;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     border-radius: 10px;
 }
-
-.div-login input:focus,
-.div-login select:focus {
-    outline: 2px solid rgba(2, 240, 200, 0.3);
+.div-elements input:focus,
+.div-elements select:focus {
+    outline: 2px solid rgba(7, 252, 101, 0.3);
 }
-
 .div-show-exercises {
     color: white;
     display: flex;
 }
-
 .form-filter select {
     height: 35px;
     width: 300px;
     font-size: 1.2rem;
     font-style: italic;
 }
-
 .form-filter {
     display: flex;
     justify-content: center;
     align-items: center;
     column-gap: 20px;
 }
-
 .table-dark {
     background-color: #222;
     color: white;
     border-collapse: collapse;
 }
-
 .table-head th {
     border-bottom: 1px solid white;
     padding: 10px;
 }
-
 .table-row:nth-child(even) {
     background-color: rgb(59, 58, 58);
 }
-
 .table-row td {
     border-right: 1px solid white;
     padding: 10px;
 }
-
 .table-row td:last-child {
     border: none;
 }
 
+/* Media querries for responsive design */
+@media only screen and (max-width: 480px) {
+    
+    .div-bg {
+        background-color: #222;
+    }
 
-/* Responsive Media Queries */
+    .div-menu {
+        padding: 50px 0 50px 0;
+        width: auto;
+        border: none;
+        box-shadow: none;
+    }
+    
+    .div-title {
+        width: 100%;
+        padding: 30px 10px 30px 10px;
+        box-shadow: none;
+    }
 
-/* Small devices (up to 576px) */
-@media (max-width: 576px) {
-    .div-menu {
-      padding: 30px;
+    .div-title p {
+        font-size: 2rem;
     }
-    .div-title {
-      padding: 0 30px;
-    }
-    .div-menu textarea {
-      width: 100%;
-      height: 300px;
-      font-size: 1rem;
-    }
-    .btn-menu {
-      width: 200px;
-      font-size: 1.2rem;
-    }
-  }
-  
-  /* Medium devices (between 576px and 992px) */
-  @media (min-width: 576px) and (max-width: 992px) {
-    .div-menu {
-      padding: 50px;
-    }
-    .div-title {
-      padding: 0 50px;
-    }
-    .div-menu textarea {
-      width: 100%;
-      height: 400px;
-    }
-    .btn-menu {
-      width: 200px;
-    }
-  }
-  
-  /* Large devices (between 992px and 1200px) */
-  @media (min-width: 992px) and (max-width: 1200px) {
-    .div-menu {
-      padding: 50px 100px;
-    }
-    .div-title {
-      padding: 0 100px;
-    }
-    .div-menu textarea {
-      width: 100%;
-      height: 400px;
-    }
-    .btn-menu {
-      width: 200px;
-    }
-    .div-buttons {
-      flex-direction: column;
-      padding: 50px;
-      row-gap: 20px;
-    }
-  }
-  
-  /* Extra large devices (above 1200px) */
-  @media (min-width: 1200px) {
-    .div-menu {
-      padding: 50px 150px;
-    }
-    .div-title {
-      padding: 0 150px;
-    }
-    .div-menu textarea {
-      width: 900px;
-      height: 500px;
-    }
-    .btn-menu {
-      width: 400px;
-    }
-    .div-buttons {
-      padding: 50px;
-      row-gap: 30px;
-    }
-  }
+
+}
+
   

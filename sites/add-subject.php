@@ -2,7 +2,6 @@
 session_start();
 require '../engine/functions.php';
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -22,7 +21,7 @@ require '../engine/functions.php';
       </div>
       <div class="div-buttons">
         <form method="post">
-          <div class="div-login">
+          <div class="div-elements">
             <div>
               <label for="fach">New Subject: </label>
               <input name="fach" type="text">

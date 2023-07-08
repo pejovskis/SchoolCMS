@@ -22,7 +22,7 @@
       </div>
       <div class="div-buttons">
         <form method="post"> 
-          <div class="div-login">
+          <div class="div-elements">
             <div>
               <label for="category">New Category: </label>
               <input name="category" type="text">

@@ -21,7 +21,7 @@ require '../engine/functions.php';
       </div>
       <div class="div-buttons">
         <form method="post" enctype="multipart/form-data">
-          <div class="div-login">
+          <div class="div-elements">
             <div class="">
               <label for="email">Email address</label>
               <input name="email" type="email">

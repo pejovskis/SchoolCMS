@@ -22,7 +22,7 @@ require '../engine/functions.php';
       </div>
       <div class="div-buttons">
           <form method="post" enctype="multipart/form-data">
-            <div class="div-login">
+            <div class="div-elements">
               <label for="aufgabe-name">Exercise Name</label>
               <input name="aufgabe-name" type="text" placeholder="Enter Name here">
               <label for="beschreibung">Description</label>

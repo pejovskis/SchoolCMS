@@ -18,7 +18,8 @@ require '../engine/functions.php';
       <div class="div-title">
         <p>User Manual</p>
       </div>
-      <textarea>
+      <div class="div-textarea">
+        <textarea>
 Willkommen zur App-Bedienungshilfe! Diese spezielle App wurde entwickelt, 
 um Benutzerinteraktionen zu simulieren und Testumgebungen für verschiedene Szenarien bereitzustellen. 
 Bitte beachten Sie, dass dies eine fiktive App ist und keine echte Funktionalität bietet. 
@@ -54,11 +55,13 @@ und werden nicht gespeichert. Verwenden Sie diese App-Bedienungshilfe ausschlie�
 für Test- und Schulungszwecke.
 
 Vielen Dank für Ihre Teilnahme!</textarea>
-      <div class="div-buttons">
-            <?php
-            btnBackToMainMenu();
-            ?>
-      </div>    
+        <div class="div-buttons">
+          <?php
+          btnBackToMainMenu();
+          ?>
+        </div>
+      </div>
+
     </div>
   </div>
 </body>

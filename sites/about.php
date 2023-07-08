@@ -18,9 +18,10 @@ require '../engine/functions.php';
       <div class="div-title">
         <p>About</p>
       </div>
-      <textarea>
-    
-            Titel: "DBManager - Eine revolutionäre App zur Verwaltung von Bildungsdaten"
+      <div class="div-textarea">
+        <textarea>
+
+Titel: "DBManager - Eine revolutionäre App zur Verwaltung von Bildungsdaten"
 
 Beschreibung: DBManager ist eine bahnbrechende App, die entwickelt wurde, um den reibungslosen Austausch von Informationen zwischen Schülern und Dozenten zu ermöglichen. Diese fortschrittliche Anwendung verwaltet Datenbanken, um den Zugriff auf Aufgaben und Informationen zu koordinieren. Mit DBManager können Schüler auf ihre zugewiesenen Aufgaben zugreifen, während Dozenten neue Aufgaben erstellen und Daten aktualisieren können.
 
@@ -45,11 +46,12 @@ Durch die Verwendung von Verschlüsselung und sicheren Verbindungen wird die Ver
 Hinweis: Diese App ist eine fiktive Anwendung, die für Testzwecke erstellt wurde. Sie hat keine tatsächliche Funktionalität und speichert keine echten Daten. Sie wurde entwickelt, um Benutzerinteraktionen zu simulieren und die Verwaltung von Bildungsdaten zu demonstrieren.
 
 Genießen Sie die Vorteile einer effizienten und organisierten Datenverwaltung mit DBManager.</textarea>
-<div class="div-buttons">
-            <?php
-            btnBackToMainMenu();
-            ?>
-      </div>    
+        <div class="div-buttons">
+          <?php
+          btnBackToMainMenu();
+          ?>
+        </div>
+      </div>
     </div>
   </div>
 </body>
