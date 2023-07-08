@@ -67,7 +67,7 @@ checkIfEditPosible($row);
               ?>
               <div>
                 <label for="excercise-file">Upload ONLY PDF Files !</label>
-                <input name="excercise-file" type="file">
+                <input name="excercise-file" type="file" accept="application/pdf">
               </div>
             </div>
             <div class="div-cancon">
