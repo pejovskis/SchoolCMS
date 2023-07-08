@@ -26,7 +26,9 @@ require '../engine/functions.php';
               <label for="aufgabe-name">Exercise Name</label>
               <input name="aufgabe-name" type="text" placeholder="Enter Name here">
               <label for="beschreibung">Description</label>
-              <textarea name="beschreibung" type="text" placeholder="Enter description here"></textarea>
+              <div class="div-textarea">
+                <textarea name="beschreibung" type="text" placeholder="Enter description here"></textarea>
+              </div>
               <label for="hinweis">Hint</label>
               <input name="hinweis" type="text" placeholder="Enter Hint here">
               <div class="form-group">
