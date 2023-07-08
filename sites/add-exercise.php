@@ -65,7 +65,7 @@ require '../engine/functions.php';
               </div>
               <div>
                 <label for="excercise-file">Upload ONLY PDF Files !</label>
-                <input id="btn-upload-file" name="excercise-file" type="file">
+                <input id="btn-upload-file" name="excercise-file" type="file" accept="application/pdf">
               </div>
             </div>
             <div class="div-cancon">
