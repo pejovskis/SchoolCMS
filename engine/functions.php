@@ -1,5 +1,4 @@
 <?php
-
 //Display the user info to the Menu
 function displayMainMenuUserInfo()
 {
@@ -34,8 +33,7 @@ function btnLogOut()
     if (isset($_POST['logout'])) {
         session_destroy();
         //redirect to log in menu
-        echo '<script>alert(' . "User " . $_SESSION['name']  . " successfully logged out." . ')</script>';
-        header('Location: ../../index.php');
+        echo '<script>window.location.href = "../../index.php";</script>';
         exit;
     }
 }
@@ -286,7 +284,7 @@ function checkUserLogin()
 function redirectLoggedUser()
 {
     if (checkUserLogin()) {
-        header("Location: ../sites/main-menu.php");
+        echo '<script>window.location.href = "../sites/main-menu.php";</script>';
     }
 }
 
@@ -295,7 +293,7 @@ function redirectCheckUserLogIn()
 {
     if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
         //false- result:
-        header('Location: unauthorized.php');
+        echo '<script>window.location.href = "unauthorized.php";</script>';
         exit;
     }
 }
@@ -305,7 +303,7 @@ function redirectCheckSuperUserLogIn()
     //Check if authorized user is logged in
     if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] || $_SESSION['status_level'] != 9) {
         //failed results:
-        header('Location: unauthorized.php');
+        echo '<script>window.location.href = "unauthorized.php";</script>';
         exit;
     }
 }
@@ -463,7 +461,7 @@ function userLogIn()
                     $_SESSION['last_name'] = $row['last_name'];
                     $_SESSION['status_level'] = $row['status_level'];
 
-                    header('Location: ../sites/main-menu.php');
+                    echo '<script>window.location.href = "../sites/main-menu.php";</script>';
 
                     exit;
                 } else {
@@ -578,9 +576,9 @@ function getExerciseDetails($exerciseId)
 function checkIfEditPosible($row)
 {
     if ($_SESSION['id'] != $row['added_by'] && $_SESSION['status_level'] < 2) {
-        header('Location: exercises.php');
+        echo '<script>window.location.href = "exercises.php";</script>';
     } else if ($_SESSION['id'] != $row['added_by']  && $_SESSION['status_level'] === 2) {
-        header('Location: exercises.php');
+        echo '<script>window.location.href = "exercises.php";</script>';
     }
 }
 
