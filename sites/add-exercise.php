@@ -15,7 +15,7 @@ require '../engine/functions.php';
 
 <body>
 
-  <div class="div-bg">
+<div class="div-bg">
     <div class="div-menu">
       <div class="div-title">
         <p> Add Exercise </p>
@@ -23,7 +23,7 @@ require '../engine/functions.php';
       <div class="div-buttons">
           <form method="post" enctype="multipart/form-data">
             <div class="div-login">
-              <label for="aufgabe-name">Excercise Name</label>
+              <label for="aufgabe-name">Exercise Name</label>
               <input name="aufgabe-name" type="text" placeholder="Enter Name here">
               <label for="beschreibung">Description</label>
               <textarea name="beschreibung" type="text" placeholder="Enter description here"></textarea>
@@ -31,8 +31,7 @@ require '../engine/functions.php';
               <input name="hinweis" type="text" placeholder="Enter Hint here">
               <div class="form-group">
                 <label for="fach">Subject</label>
-                <select name="fach">
-                  <option>Select Subject</option>
+                <select id="fach" name="fach">
                   <?php
                   $fachOptions = [];
                   pullSubjectFromDb($fachOptions);
@@ -48,8 +47,7 @@ require '../engine/functions.php';
 
               <div>
                 <label for="kategorie">Category</label>
-                <select name="kategorie">
-                  <option>Select Category</option>
+                <select id="kategorie" name="kategorie" onchange="toggleSelect('new-kategorie', 'kategorie')">
                   <?php
                   $kategorieOptions = [];
                   pullCategoryFromDb($kategorieOptions);
@@ -59,7 +57,7 @@ require '../engine/functions.php';
               </div>
               <div>
                 <label for="new-kategorie">New Category</label>
-                <input name="new-kategorie" type="text" placeholder="New Category">
+                <input id="new-kategorie" name="new-kategorie" type="text" placeholder="New Category" oninput="toggleSelect('kategorie', 'new-kategorie')">
               </div>
               <div>
                 <label for="excercise-file">Upload ONLY PDF Files !</label>
@@ -79,6 +77,43 @@ require '../engine/functions.php';
     </div>
   </div>
 
-</body>
+  <script>
+  function toggleSelect(elementId, inputId) {
+    const selectElement = document.getElementById(elementId);
+    const inputElement = document.getElementById(inputId);
 
+    if (selectElement.value == 'None') {
+      selectElement.disabled = true;
+      inputElement.disabled = false;
+    } else if (inputElement.value !== '') {
+      selectElement.disabled = true;
+      inputElement.disabled = false;
+    } else {
+      selectElement.disabled = false;
+      inputElement.disabled = true;
+    }
+
+    inputElement.addEventListener('input', function() {
+      if (inputElement.value !== '') {
+        selectElement.disabled = true;
+        inputElement.disabled = false;
+      } else {
+        selectElement.disabled = false;
+        inputElement.disabled = true;
+      }
+    });
+
+    selectElement.addEventListener('change', function() {
+      if (selectElement.value === '') {
+        selectElement.disabled = false;
+        inputElement.disabled = true;
+      } else {
+        inputElement.value = '';
+        selectElement.disabled = true;
+        inputElement.disabled = false;
+      }
+    });
+  }
+</script>
+</body>
 </html>

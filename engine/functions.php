@@ -483,43 +483,64 @@ function userLogIn()
 
 function addNewUser()
 {
-
     require 'db-conn-userss.php';
 
-    if ((isset($_POST['email']) &&
-        isset($_POST['password']) &&
-        isset($_POST['first-name']) &&
-        isset($_POST['last-name']) &&
-        isset($_POST['status-level']))) {
+    if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['first-name']) && isset($_POST['last-name']) && isset($_POST['status-level'])) {
+        // Retrieve form data
         $email = $_POST['email'];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $first_name = $_POST['first-name'];
         $last_name = $_POST['last-name'];
         $status_level = $_POST['status-level'];
 
-        //Check for empty fields
+        // Check for empty fields
         if (empty($email) || empty($password) || empty($first_name) || empty($last_name) || empty($status_level)) {
             echo '<script>alert("Please fill in all required fields.")</script>';
             exit;
         }
 
-        //Insert the new user in -users- sql
-        $query = "INSERT INTO userss (email, password, first_name, last_name, status_level) VALUES (?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "sssss", $email, $password, $first_name, $last_name, $status_level);
+        // Check if a file was uploaded
+        if (isset($_FILES['profile-image']) && $_FILES['profile-image']['error'] === UPLOAD_ERR_OK) {
+            // Retrieve the file details
+            $image_file_name = $_FILES['profile-image']['name'];
+            $image_file_tmp = $_FILES['profile-image']['tmp_name'];
+            $image_file_type = $_FILES['profile-image']['type'];
 
-        if (mysqli_stmt_execute($stmt)) {
-            echo '<script>alert("New user registered successfully")</script>';
+            // Read the file content
+            $image_data = file_get_contents($image_file_tmp);
+
+            // Insert the new user with the image data
+            $query = "INSERT INTO userss (email, password, first_name, last_name, status_level, user_photo) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, "sssssb", $email, $password, $first_name, $last_name, $status_level, $image_data);
+
+            if (mysqli_stmt_execute($stmt)) {
+                echo '<script>alert("New user registered successfully")</script>';
+            } else {
+                echo '<script>alert("Error registering new user")</script>';
+            }
         } else {
-            echo '<script>alert("Error registering new user")</script>';
+            // Insert the new user without an image
+            $query = "INSERT INTO userss (email, password, first_name, last_name, status_level) VALUES (?, ?, ?, ?, ?)";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, "sssss", $email, $password, $first_name, $last_name, $status_level);
+
+            if (mysqli_stmt_execute($stmt)) {
+                echo '<script>alert("New user registered successfully")</script>';
+            } else {
+                echo '<script>alert("Error registering new user")</script>';
+            }
         }
     } else {
         echo '<script>alert("Please fill all the fields!")</script>';
     }
 
-    //Close the db connection
+    // Close the database connection
     mysqli_close($conn);
 }
+
+
+
 
 function btnAddExercise()
 {

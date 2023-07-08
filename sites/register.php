@@ -8,7 +8,7 @@ require '../engine/functions.php';
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+  <title>SEM User Register</title>
   <link rel="stylesheet" href="/css/stylenew.css">
 </head>
 
@@ -20,7 +20,7 @@ require '../engine/functions.php';
         <p>Add New User<p>
       </div>
       <div class="div-buttons">
-        <form method="post" class="w-100">
+        <form method="post" enctype="multipart/form-data">
           <div class="div-login">
             <div class="">
               <label for="email">Email address</label>
@@ -37,6 +37,10 @@ require '../engine/functions.php';
             <div>
               <label for="last-name">Last Name</label>
               <input name="last-name" type="text">
+            </div>
+            <div>
+              <label for="profile-image">Profile Image</label>
+              <input name="profile-image" type="file">
             </div>
             <div>
               <label for="status-level">Status Level</label>
