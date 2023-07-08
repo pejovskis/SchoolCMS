@@ -250,6 +250,15 @@ label {
     border: none;
 }
 
+/* Required Field */
+.field-required p {
+    font-size: 0.8rem;
+}
+
+.red-asterisk {
+    color: red;
+}
+
 /* Media querries for responsive design */
 @media only screen and (max-width: 480px) {
     
@@ -265,7 +274,7 @@ label {
     }
     
     .div-title {
-        width: 100%;
+        width: 90%;
         padding: 30px 10px 30px 10px;
         box-shadow: none;
     }
@@ -275,5 +284,59 @@ label {
     }
 
 }
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+    .div-menu {
+      width: 100%;
+      margin: 10px;
+    }
+
+    .form-filter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-filter select {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .table-dark {
+      overflow-x: auto;
+      display: block;
+    }
+
+    .table-dark thead {
+      display: none;
+    }
+
+    .table-dark tbody,
+    .table-dark tr,
+    .table-dark th,
+    .table-dark td {
+      display: block;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .table-dark td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .div-bg {
+      overflow: auto;
+    }
+
+    .div-title {
+      text-align: center;
+      padding: 10px;
+    }
+  }
 
   

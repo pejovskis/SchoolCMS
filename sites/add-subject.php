@@ -23,8 +23,8 @@ require '../engine/functions.php';
         <form method="post">
           <div class="div-elements">
             <div>
-              <label for="fach">New Subject: </label>
-              <input name="fach" type="text">
+              <label for="subject">New Subject: </label>
+              <input name="subject" type="text">
             </div>
           </div>
           <div class="div-cancon">

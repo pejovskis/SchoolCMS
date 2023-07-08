@@ -26,11 +26,11 @@ require '../engine/functions.php';
           <?php
           exerciseFilter();
           ?>
-          <select name="fach" id="fachSelect">
+          <select name="subject" id="subjectSelect">
             <option value="">Select subject</option>
             <?php filterSubject(); ?>
           </select>
-          <select name="kategorie" id="kategorieSelect">
+          <select name="category" id="categorySelect">
             <option value="">Select category</option>
             <?php filterCategory(); ?>
           </select>
@@ -40,16 +40,17 @@ require '../engine/functions.php';
           ?>
         </form>
       </div>
+      <div style="overflow-x: auto;">
       <table class="table-dark">
         <thead class="table-head">
           <tr class="table-row">
             <th scope="col">#id</th>
-            <th scope="col">Aufgabe Name</th>
-            <th scope="col">Beschreibung</th>
-            <th scope="col">Hinweis</th>
-            <th scope="col">Fach</th>
-            <th scope="col">Kategorie</th>
-            <th scope="col">Datum</th>
+            <th scope="col">Exercise Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Hint</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Category</th>
+            <th scope="col">Date</th>
             <th scope="col">Added From</th>'
             <th scope="col">PDF File</th>
             <?php
@@ -66,6 +67,7 @@ require '../engine/functions.php';
           ?>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 </body>

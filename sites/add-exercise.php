@@ -23,20 +23,21 @@ require '../engine/functions.php';
       <div class="div-buttons">
           <form method="post" enctype="multipart/form-data">
             <div class="div-elements">
-              <label for="aufgabe-name">Exercise Name</label>
-              <input name="aufgabe-name" type="text" placeholder="Enter Name here">
-              <label for="beschreibung">Description</label>
+              <label for="exercise-name">Exercise Name</label>
+              <input name="exercise-name" type="text" placeholder="Enter Name here">
+              <label for="description">Description</label>
               <div class="div-textarea">
-                <textarea name="beschreibung" type="text" placeholder="Enter description here"></textarea>
+                <textarea name="description" type="text" placeholder="Enter description here"></textarea>
               </div>
-              <label for="hinweis">Hint</label>
-              <input name="hinweis" type="text" placeholder="Enter Hint here">
-              <div class="form-group">
-                <label for="fach">Subject</label>
-                <select id="fach" name="fach">
+              <label for="hint">Hint</label>
+              <input name="hint" type="text" placeholder="Enter Hint here">
+              <div class="field-required">
+                <label for="subject">Subject</label>
+                <p> <span class="red-asterisk" >&#42;</span> This field is required.</p>
+                <select id="subject" name="subject">
                   <?php
-                  $fachOptions = [];
-                  pullSubjectFromDb($fachOptions);
+                  $subjectOptions = [];
+                  pullSubjectFromDb($subjectOptions);
                   filterSubject();
                   ?>
                 </select>
@@ -47,19 +48,20 @@ require '../engine/functions.php';
               }
               ?>
 
-              <div>
-                <label for="kategorie">Category</label>
-                <select id="kategorie" name="kategorie" onchange="toggleSelect('new-kategorie', 'kategorie')">
+              <div class="field-required">
+                <label for="category">Category</label>
+                <p> <span class="red-asterisk" >&#42;</span> This field is required.</p>
+                <select id="category" name="category" onchange="toggleSelect('new-category', 'category')">
                   <?php
-                  $kategorieOptions = [];
-                  pullCategoryFromDb($kategorieOptions);
+                  $categoryOptions = [];
+                  pullCategoryFromDb($categoryOptions);
                   filterCategory();
                   ?>
                 </select>
               </div>
               <div>
-                <label for="new-kategorie">New Category</label>
-                <input id="new-kategorie" name="new-kategorie" type="text" placeholder="New Category" oninput="toggleSelect('kategorie', 'new-kategorie')">
+                <label for="new-category">New Category</label>
+                <input id="new-category" name="new-category" type="text" placeholder="New Category" oninput="toggleSelect('category', 'new-category')">
               </div>
               <div>
                 <label for="excercise-file">Upload ONLY PDF Files !</label>

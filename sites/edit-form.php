@@ -29,32 +29,39 @@ checkIfEditPosible($row);
             <div class="div-elements">
               <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
               <label for="name" type="text">Name:</label>
-              <input type="text" name="aufgabe-name" value="<?php echo $row['name']; ?>">
-              <label for="beschreibung">Description</label>
+              <input type="text" name="exercise-name" value="<?php echo $row['name']; ?>">
+              <label for="description">Description</label>
               <div class="div-textarea">
-                <textarea type="text" name="beschreibung" placeholder="<?php echo $row['beschreibung']; ?>"></textarea>
+              <textarea id="add-exercise-description" type="text" name="description">
+                <?php echo $row['description']; ?>
+              </textarea>
               </div>
-              <label for="hinweis">Hint</label>
-              <input name="hinweis" type="text" value="<?php echo $row['hinweis']; ?>">
-              <label for="fach">Subject</label>
-              <select name="fach">
-                <option>Select Subject</option>
-                <?php
-                filterSubject();
-                ?>
-              </select>
+              <label for="hint">Hint</label>
+              <input name="hint" type="text" value="<?php echo $row['hint']; ?>">
+              <div class="field-required">
+                <label for="subject">Subject</label>
+                <p> <span class="red-asterisk" >&#42;</span> This field is required.</p>
+                <select name="subject">
+                  <?php
+                  filterSubject();
+                  ?>
+                </select>
+              </div>
+              
               <?php
               if (superCheck()) {
                 displayNewSubjectField();
               }
               ?>
-              <label for="kategorie">Category</label>
-              <select name="kategorie">
-                <option>Select Category</option>
-                <?php
-                filterCategory();
-                ?>
-              </select>
+              <div class="field-required">
+                <label for="category">Category</label>
+                <p> <span class="red-asterisk" >&#42;</span> This field is required.</p>
+                <select name="category">
+                  <?php
+                  filterCategory();
+                  ?>
+                </select>
+              </div>
               <?php
               displayNewCategoryField();
               ?>
@@ -64,7 +71,7 @@ checkIfEditPosible($row);
               </div>
             </div>
             <div class="div-cancon">
-              <a class="btn-cancel" href="../sites/main-menu.php"> cancel </a>
+              <a class="btn-cancel" href="../sites/exercises.php"> cancel </a>
               <button name="submit" type="submit" value="update" class="btn-confirm">save</button>
               <?php btnDeleteExercise(); ?>
             </div>

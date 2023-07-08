@@ -1,11 +1,11 @@
 <?php
-require 'db-conn-aufgabe.php';
+require 'db-conn-exercises.php';
 
 //Get the exercise ID from the query string
 $exerciseId = $_GET['id'];
 
 //Retrieve the file data from the database based on the exercise ID
-$query = "SELECT name, pdf_file FROM aufgabe WHERE id = " . $exerciseId;
+$query = "SELECT name, pdf_file FROM exercise WHERE id = " . $exerciseId;
 $result = mysqli_query($conn, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {

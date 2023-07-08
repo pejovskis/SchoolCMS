@@ -55,10 +55,10 @@ function btnBackToMainMenu()
 
 function deleteExerciseContent($exerciseId)
 {
-    require '../engine/db-conn-aufgabe.php';
+    require '../engine/db-conn-exercises.php';
 
     // Perform the delete operation
-    $query = "DELETE FROM aufgabe WHERE id = " . $exerciseId;
+    $query = "DELETE FROM exercise WHERE id = " . $exerciseId;
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $conn->close();
@@ -66,12 +66,12 @@ function deleteExerciseContent($exerciseId)
 
 function btnDeleteExercise()
 {
-    require '../engine/db-conn-aufgabe.php';
+    require '../engine/db-conn-exercises.php';
     if (isset($_GET['id'])) {
         $exerciseId = $_GET['id'];
 
         // Fetch data for $row from the database
-        $query = "SELECT * FROM aufgabe WHERE id = ?";
+        $query = "SELECT * FROM exercise WHERE id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("i", $exerciseId);
         $stmt->execute();
@@ -94,9 +94,9 @@ function addCategoryToDb()
         if (!empty($_POST['category'])) {
             $category = $_POST['category'];
 
-            require 'db-conn-aufgabe.php';
+            require 'db-conn-exercises.php';
 
-            //insert new -kategorie- into the db
+            //insert new -category- into the db
             $query = "INSERT INTO category (name) VALUES (?)";
             $stmt = mysqli_prepare($conn, $query);
             mysqli_stmt_bind_param($stmt, 's', $category);
@@ -118,15 +118,15 @@ function addCategoryToDb()
 function addSubjectToDb()
 {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Take 'fach' from the form
-        if (!empty($_POST['fach'])) {
-            $fach = $_POST['fach'];
-            require 'db-conn-aufgabe.php';
+        // Take 'subject' from the form
+        if (!empty($_POST['subject'])) {
+            $subject = $_POST['subject'];
+            require 'db-conn-exercises.php';
 
-            // Insert new 'fach' into the database
-            $query = "INSERT INTO fach (name) VALUES (?)";
+            // Insert new 'subject' into the database
+            $query = "INSERT INTO subject (name) VALUES (?)";
             $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt, 's', $fach);
+            mysqli_stmt_bind_param($stmt, 's', $subject);
 
             // Throw out alert status
             try {
@@ -144,18 +144,18 @@ function addSubjectToDb()
 
 function addExerciseContentToDb()
 {
-    require '../engine/db-conn-aufgabe.php';
+    require '../engine/db-conn-exercises.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Process form submission
-        $aufgabe_name = $_POST['aufgabe-name'];
-        $beschreibung = $_POST['beschreibung'];
-        $hinweis = $_POST['hinweis'];
-        $fach = $_POST['fach'];
-        $kategorie = $_POST['kategorie'];
-        $new_kategorie = isset($_POST['new-kategorie']) ? $_POST['new-kategorie'] : null;
-        $new_fach = isset($_POST['new-fach']) ? $_POST['new-fach'] : null;
+        $exercise_name = $_POST['exercise-name'];
+        $description = $_POST['description'];
+        $hint = $_POST['hint'];
+        $subject = $_POST['subject'];
+        $category = $_POST['category'];
+        $new_category = isset($_POST['new-category']) ? $_POST['new-category'] : null;
+        $new_subject = isset($_POST['new-subject']) ? $_POST['new-subject'] : null;
         $current_date = date('Y-m-d');
 
         // Retrieve the file details
@@ -170,37 +170,37 @@ function addExerciseContentToDb()
 
         $current_userId = intval($_SESSION['id']);
 
-        // If new category is selected, change the main variable $kategorie
+        // If new category is selected, change the main variable $category
         // because this one is inserted into the specific table in the database first and bound in the query later
-        if ($new_kategorie) {
+        if ($new_category) {
             $query = "INSERT INTO category (name) VALUES (?)";
             $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt, 's', $new_kategorie);
+            mysqli_stmt_bind_param($stmt, 's', $new_category);
             mysqli_stmt_execute($stmt);
-            $kategorie = $new_kategorie;
+            $category = $new_category;
         }
 
-        // Same for $fach as for $kategorie
-        if ($new_fach) {
-            $query = "INSERT INTO fach (name) VALUES (?)";
+        // Same for $subject as for $category
+        if ($new_subject) {
+            $query = "INSERT INTO subject (name) VALUES (?)";
             $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt, 's', $new_fach);
+            mysqli_stmt_bind_param($stmt, 's', $new_subject);
             mysqli_stmt_execute($stmt);
-            $fach = $new_fach;
+            $subject = $new_subject;
         }
 
         try {
-            // Insert the new exercise in the 'aufgabe' table
-            $query = "INSERT INTO aufgabe (name, beschreibung, hinweis, fach, kategorie, add_date, added_by, pdf_file) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            // Insert the new exercise in the 'exercise' table
+            $query = "INSERT INTO exercise (name, description, hint, subject, category, add_date, added_by, pdf_file) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt, 'ssssssss', $aufgabe_name, $beschreibung, $hinweis, $fach, $kategorie, $current_date, $current_userId, $excercise_file_data);
+            mysqli_stmt_bind_param($stmt, 'ssssssss', $exercise_name, $description, $hint, $subject, $category, $current_date, $current_userId, $excercise_file_data);
 
             // Set empty fields as NULL
-            if (empty($aufgabe_name)) $aufgabe_name = NULL;
-            if (empty($beschreibung)) $beschreibung = NULL;
-            if (empty($hinweis)) $hinweis = NULL;
-            if (empty($fach)) $fach = NULL;
-            if (empty($kategorie)) $kategorie = NULL;
+            if (empty($exercise_name)) $exercise_name = NULL;
+            if (empty($description)) $description = NULL;
+            if (empty($hint)) $hint = NULL;
+            if (empty($subject)) $subject = NULL;
+            if (empty($category)) $category = NULL;
 
             if (mysqli_stmt_execute($stmt)) {
                 echo "<script>alert('New exercise added successfully!')</script>";
@@ -215,34 +215,34 @@ function addExerciseContentToDb()
 }
 
 
-function pullCategoryFromDb(&$kategorieOptions)
+function pullCategoryFromDb(&$categoryOptions)
 {
-    require 'db-conn-aufgabe.php';
+    require 'db-conn-exercises.php';
 
     $query = "SELECT name FROM category";
     $result = mysqli_query($conn, $query);
 
-    //Get -kategorie- from db and populate $kategorieOptions array
+    //Get -category- from db and populate $categoryOptions array
     if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            $kategorieOptions[] = $row['name'];
+            $categoryOptions[] = $row['name'];
         }
     }
 
     mysqli_close($conn);
 }
 
-function pullSubjectFromDb(&$fachOptions)
+function pullSubjectFromDb(&$subjectOptions)
 {
-    require 'db-conn-aufgabe.php';
+    require 'db-conn-exercises.php';
 
-    $query = "SELECT name FROM fach";
+    $query = "SELECT name FROM subject";
     $result = mysqli_query($conn, $query);
 
-    // Get -fach- from db and populate $fachOptions array
+    // Get -subject- from db and populate $subjectOptions array
     if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            $fachOptions[] = $row['name'];
+            $subjectOptions[] = $row['name'];
         }
     }
 
@@ -251,26 +251,26 @@ function pullSubjectFromDb(&$fachOptions)
 
 function filterSubject()
 {
-    global $fachOptions;
-    foreach ($fachOptions as $fachOption) :
-        echo '<option value="' . $fachOption . '">' . $fachOption . '</option>';
+    global $subjectOptions;
+    foreach ($subjectOptions as $subjectOption) :
+        echo '<option value="' . $subjectOption . '">' . $subjectOption . '</option>';
     endforeach;
 }
 
 function filterCategory()
 {
-    global $kategorieOptions;
-    foreach ($kategorieOptions as $kategorieOption) :
-        echo '<option value="' . $kategorieOption . '">' . $kategorieOption . '</option>';
+    global $categoryOptions;
+    foreach ($categoryOptions as $categoryOption) :
+        echo '<option value="' . $categoryOption . '">' . $categoryOption . '</option>';
     endforeach;
 }
 
 //Pull subjects and categories from the database and populate the respective arrays
-$fachOptions = [];
-pullSubjectFromDb($fachOptions);
+$subjectOptions = [];
+pullSubjectFromDb($subjectOptions);
 
-$kategorieOptions = [];
-pullCategoryFromDb($kategorieOptions);
+$categoryOptions = [];
+pullCategoryFromDb($categoryOptions);
 
 function checkUserLogin()
 {
@@ -326,71 +326,84 @@ function superCheck()
 
 function displayExercises()
 {
+    require 'db-conn-exercises.php';
 
-    require 'db-conn-aufgabe.php';
+    $query = "SELECT * FROM exercise WHERE 1=1";
 
-    //Fetch data from the database with filtering
-    $query = "SELECT * FROM aufgabe WHERE 1=1";
-
-    //Check -Fach- filter 
-    if (!empty($_GET['fach'])) {
-        $fach = $_GET['fach'];
-        $query .= " AND fach = '$fach'";
+    if (!empty($_GET['subject'])) {
+        $subject = $_GET['subject'];
+        $query .= " AND subject = '$subject'";
     }
 
-    //Check -Kategorie- filter
-    if (!empty($_GET['kategorie'])) {
-        $kategorie = $_GET['kategorie'];
-        $query .= " AND kategorie = '$kategorie'";
+    if (!empty($_GET['category'])) {
+        $category = $_GET['category'];
+        $query .= " AND category = '$category'";
     }
 
     $result = mysqli_query($conn, $query);
 
-    //Check errors
     if (!$result) {
         die("Error executing query: " . mysqli_error($conn));
     }
 
-    //Generate html rows
+    $isMobile = false;
+
+    // Check if the user agent is a mobile device
+    if (isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/mobile|android/i', $_SERVER['HTTP_USER_AGENT'])) {
+        $isMobile = true;
+    }
+
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr class='table-row'>";
-        echo "<th scope='row'>" . $row['id'] . "</th>";
-        echo "<td>" . $row['name'] . "</td>";
-        echo "<td>" . $row['beschreibung'] . "</td>";
-        echo "<td>" . $row['hinweis'] . "</td>";
-        echo "<td>" . $row['fach'] . "</td>";
-        echo "<td>" . $row['kategorie'] . "</td>";
-        echo "<td>" . $row['add_date'] . "</td>";
-        $added_by = intval($row['added_by']);
-        echo "<td>" . getName($added_by) . "</td>";
-        echo "<td><a class='btn-confirm' href='../engine/download.php?id=" . $row['id'] . "'>Download</a></td>";
-        if ($_SESSION['status_level'] === 9) {
-            // Super Admin can edit all exercises
-            echo "<td><a class='btn-cancel' href='../engine/edit.php?id=" . $row['id'] . "'>Edit</a></td>";
-        } else if ($_SESSION['status_level'] === 2 && $_SESSION['id'] === $added_by) {
-            // Admin can only edit their own exercises
-            echo "<td><a class='btn-cancel' href='../engine/edit.php?id=" . $row['id'] . "'>Edit</a></td>";
-        } else if ($_SESSION['status_level'] === 2 && $_SESSION['id'] != $added_by) {
-            // Students do not have access to edit
-            echo "<td> No Access </td>";
-        } else {
-            echo "</tr>";
+        
+        if (!$isMobile) {
+            echo "<th scope='row'>" . $row['id'] . "</th>";
+            echo "<td>" . $row['name'] . "</td>";
+            echo "<td>" . $row['description'] . "</td>";
+            echo "<td>" . $row['hint'] . "</td>";
+            echo "<td>" . $row['subject'] . "</td>";
+            echo "<td>" . $row['category'] . "</td>";
+            echo "<td>" . $row['add_date'] . "</td>";
+            $added_by = intval($row['added_by']);
+            echo "<td>" . getName($added_by) . "</td>";
+            echo "<td><a class='btn-confirm' href='../engine/download.php?id=" . $row['id'] . "'>Download</a></td>";
         }
         
+        if ($_SESSION['status_level'] === 9 || ($_SESSION['status_level'] === 2 && $_SESSION['id'] === $added_by)) {
+            echo "<td><a class='btn-cancel' href='../engine/edit.php?id=" . $row['id'] . "'>Edit</a></td>";
+        } else if ($_SESSION['status_level'] === 2 && $_SESSION['id'] != $added_by) {
+            echo "<td>No Access</td>";
+        }
         
+        if ($isMobile) {
+            echo "<td>Exercise id: " . $row['id'] . "</td>";
+            echo "<td>Name: " . $row['name'] . "</td>";
+            echo "<td>description: " . $row['description'] . "</td>";
+            echo "<td>hint: " . $row['hint'] . "</td>";
+            echo "<td>subject: " . $row['subject'] . "</td>";
+            echo "<td>category: " . $row['category'] . "</td>";
+            echo "<td>Datum: " . $row['add_date'] . "</td>";
+            $added_by = intval($row['added_by']);
+            echo "<td>Added From: " . getName($added_by) . "</td>";
+            echo "<td><a class='btn-confirm' href='../engine/download.php?id=" . $row['id'] . "'>Download</a></td>";
+        }
+        
+        echo "</tr>";
     }
 
     mysqli_close($conn);
 }
 
+
+
 function getName($added_by)
 {
-    require 'db-conn-userss.php';
+    require 'db-conn-users.php';
 
     $first_name = '';
     $last_name = '';
 
-    $query = 'SELECT first_name, last_name FROM userss where id="' . $added_by . '";';
+    $query = 'SELECT first_name, last_name FROM user where id="' . $added_by . '";';
 
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_execute($stmt);
@@ -410,35 +423,35 @@ function getName($added_by)
 function exerciseFilter()
 {
 
-    include 'db-conn-aufgabe.php';
+    include 'db-conn-exercises.php';
 
-    //Fetch -Fach- options
-    $fachOptionsQuery = "SELECT DISTINCT fach FROM aufgabe";
-    $fachOptionsResult = mysqli_query($conn, $fachOptionsQuery);
-    $fachOptions = array();
-    while ($fachOption = mysqli_fetch_assoc($fachOptionsResult)) {
-        $fachOptions[] = $fachOption['fach'];
+    //Fetch -subject- options
+    $subjectOptionsQuery = "SELECT DISTINCT subject FROM exercise";
+    $subjectOptionsResult = mysqli_query($conn, $subjectOptionsQuery);
+    $subjectOptions = array();
+    while ($subjectOption = mysqli_fetch_assoc($subjectOptionsResult)) {
+        $subjectOptions[] = $subjectOption['subject'];
     }
 
-    // Fetch -Kategorie- 
-    $kategorieOptionsQuery = "SELECT DISTINCT kategorie FROM aufgabe";
-    $kategorieOptionsResult = mysqli_query($conn, $kategorieOptionsQuery);
-    $kategorieOptions = array();
-    while ($kategorieOption = mysqli_fetch_assoc($kategorieOptionsResult)) {
-        $kategorieOptions[] = $kategorieOption['kategorie'];
+    // Fetch -category- 
+    $categoryOptionsQuery = "SELECT DISTINCT category FROM exercise";
+    $categoryOptionsResult = mysqli_query($conn, $categoryOptionsQuery);
+    $categoryOptions = array();
+    while ($categoryOption = mysqli_fetch_assoc($categoryOptionsResult)) {
+        $categoryOptions[] = $categoryOption['category'];
     }
 }
 
 function userLogIn()
 {
 
-    require 'db-conn-userss.php';
+    require 'db-conn-users.php';
     //Form
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $query = "SELECT * FROM userss WHERE email=?";
+        $query = "SELECT * FROM user WHERE email=?";
 
         //SQL Injection protect
         $stmt = mysqli_prepare($conn, $query);
@@ -481,7 +494,7 @@ function userLogIn()
 
 function addNewUser()
 {
-    require 'db-conn-userss.php';
+    require 'db-conn-users.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Check if the form is submitted
@@ -505,7 +518,7 @@ function addNewUser()
                 echo '<script>alert("Please fill in all required fields.")</script>';
             } else {
                 // Insert the new user in -users- sql
-                $query = "INSERT INTO userss (email, password, first_name, last_name, status_level) VALUES (?, ?, ?, ?, ?)";
+                $query = "INSERT INTO user (email, password, first_name, last_name, status_level) VALUES (?, ?, ?, ?, ?)";
                 $stmt = mysqli_prepare($conn, $query);
                 mysqli_stmt_bind_param($stmt, "sssss", $email, $password, $first_name, $last_name, $status_level);
 
@@ -542,23 +555,23 @@ function btnAddCategory()
 
 function btnAddSubject()
 {
-    echo '<a href="../sites/add-subject.php" class="btn-menu" href="../sites/add-fach.php">Add Subject</a>';
+    echo '<a href="../sites/add-subject.php" class="btn-menu" href="../sites/add-subject.php">Add Subject</a>';
 }
 
 function inputAddSubject()
 {
     echo '<div>
-          <label for="new-fach">New Subject</label>
-          <input name="new-fach" type="text"
+          <label for="new-subject">New Subject</label>
+          <input name="new-subject" type="text"
             placeholder="Create New Subject">
         </div>';
 }
 
 function getExerciseDetails($exerciseId)
 {
-    require '../engine/db-conn-aufgabe.php';
+    require '../engine/db-conn-exercises.php';
 
-    $query = "SELECT * FROM aufgabe WHERE id = ?";
+    $query = "SELECT * FROM exercise WHERE id = ?";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, 'i', $exerciseId);
     mysqli_stmt_execute($stmt);
@@ -584,8 +597,8 @@ function checkIfEditPosible($row)
 
 function displayNewSubjectField()
 {
-    echo '<label for="new-fach">New Subject</label>
-          <input name="new-fach" type="text"
+    echo '<label for="new-subject">New Subject</label>
+          <input name="new-subject" type="text"
             placeholder="Create New Subject">';
 }
 

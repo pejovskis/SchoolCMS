@@ -1,5 +1,5 @@
 <?php
-require 'db-conn-aufgabe.php';
+require 'db-conn-exercises.php';
 require 'functions.php';
 
 // Check if the form is submitted
@@ -8,18 +8,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Update operation
         // Get the submitted form data
         $id = $_POST['id'];
-        $name = $_POST['aufgabe-name'];
-        $beschreibung = $_POST['beschreibung'];
-        $hinweis = $_POST['hinweis'];
-        $fach = $_POST['fach'];
-        $kategorie = $_POST['kategorie'];
+        $name = $_POST['exercise-name'];
+        $description = $_POST['description'];
+        $hint = $_POST['hint'];
+        $subject = $_POST['subject'];
+        $category = $_POST['category'];
         $current_date = date('Y-m-d');
 
         // Perform the database update operation
         // Perform the database update operation
-$query = "UPDATE aufgabe SET name=?, beschreibung=?, hinweis=?, fach=?, kategorie=?, add_date=? WHERE id=?";
+$query = "UPDATE exercise SET name=?, description=?, hint=?, subject=?, category=?, add_date=? WHERE id=?";
 $stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, 'sssssss', $name, $beschreibung, $hinweis, $fach, $kategorie, $current_date, $id);
+mysqli_stmt_bind_param($stmt, 'sssssss', $name, $description, $hint, $subject, $category, $current_date, $id);
 
 try {
     if ($stmt->execute()) {
@@ -33,7 +33,7 @@ try {
             $exercise_file_data = file_get_contents($exercise_file_tmp);
 
             // Update the pdf_file column in the database
-            $update_query = "UPDATE aufgabe SET pdf_file=? WHERE id=?";
+            $update_query = "UPDATE exercise SET pdf_file=? WHERE id=?";
             $update_stmt = mysqli_prepare($conn, $update_query);
             mysqli_stmt_bind_param($update_stmt, 'si', $exercise_file_data, $id);
             $update_stmt->execute();
