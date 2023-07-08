@@ -45,7 +45,7 @@ require '../engine/functions.php';
             <div>
                 1. Student;<br>
                 2. Teacher; <br>
-                3. Super Admin</div>
+                9. Super Admin</div>
             </div>
             <div class="div-cancon">
               <a class="btn-cancel" href="../sites/main-menu.php">cancel</a>

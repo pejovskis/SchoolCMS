@@ -13,38 +13,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hinweis = $_POST['hinweis'];
         $fach = $_POST['fach'];
         $kategorie = $_POST['kategorie'];
+        $current_date = date('Y-m-d');
 
         // Perform the database update operation
-        $query = "UPDATE aufgabe SET name=?, beschreibung=?, hinweis=?, fach=?, kategorie=? WHERE id=?";
+        // Perform the database update operation
+$query = "UPDATE aufgabe SET name=?, beschreibung=?, hinweis=?, fach=?, kategorie=?, add_date=? WHERE id=?";
+$stmt = mysqli_prepare($conn, $query);
+mysqli_stmt_bind_param($stmt, 'sssssss', $name, $beschreibung, $hinweis, $fach, $kategorie, $current_date, $id);
 
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, 'ssssss', $name, $beschreibung, $hinweis, $fach, $kategorie, $id);
+try {
+    if ($stmt->execute()) {
+        // Check if a file was uploaded
+        if (isset($_FILES['excercise-file']) && $_FILES['excercise-file']['error'] === UPLOAD_ERR_OK) {
+            // Retrieve the file details
+            $exercise_file_name = $_FILES['excercise-file']['name'];
+            $exercise_file_tmp = $_FILES['excercise-file']['tmp_name'];
 
-        try {
-            if ($stmt->execute()) {
-                // Check if a file was uploaded
-                if (isset($_FILES['excercise-file']) && $_FILES['excercise-file']['error'] === UPLOAD_ERR_OK) {
-                    // Retrieve the file details
-                    $exercise_file_name = $_FILES['excercise-file']['name'];
-                    $exercise_file_tmp = $_FILES['excercise-file']['tmp_name'];
-                    
-                    // Read file content
-                    $exercise_file_data = file_get_contents($exercise_file_tmp);
-                    
-                    // Update the pdf_file column in the database
-                    $update_query = "UPDATE aufgabe SET pdf_file=? WHERE id=?";
-                    $update_stmt = mysqli_prepare($conn, $update_query);
-                    mysqli_stmt_bind_param($update_stmt, 'si', $exercise_file_data, $id);
-                    $update_stmt->execute();
-                }
+            // Read file content
+            $exercise_file_data = file_get_contents($exercise_file_tmp);
 
-                // Redirect after successful update
-                echo '<script>alert("Exercise updated successfully!");</script>';
-                echo '<script>window.location.href = "../sites/exercises.php";</script>';
-            }
-        } catch (Exception $e) {
-            echo '<script>alert("Update failed! ' . $e->getMessage() . '");</script>';
+            // Update the pdf_file column in the database
+            $update_query = "UPDATE aufgabe SET pdf_file=? WHERE id=?";
+            $update_stmt = mysqli_prepare($conn, $update_query);
+            mysqli_stmt_bind_param($update_stmt, 'si', $exercise_file_data, $id);
+            $update_stmt->execute();
         }
+
+        // Redirect after successful update
+        echo '<script>alert("Exercise updated successfully!");</script>';
+        echo '<script>window.location.href = "../sites/exercises.php";</script>';
+    }
+} catch (Exception $e) {
+    echo '<script>alert("Update failed! ' . $e->getMessage() . '");</script>';
+}
+
     } else if (isset($_POST['delete'])) {
         // Check if the exercise ID is provided
         if (isset($_POST['id'])) {
@@ -60,4 +62,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 mysqli_close($conn);
-?>

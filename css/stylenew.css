@@ -88,8 +88,9 @@ button {
     border: 1px solid rgba(206, 195, 195, 0.125);
     border-radius: 10px;
     box-shadow: 0 0 3px white;
-    background-color: rgb(252, 247, 240);
-    color: #222;
+    background-color: rgb(58, 247, 0);
+    color: white;
+    text-shadow: 1px 0 1px #000, 0 -1px 1px #000, 0 1px 1px #000, -1px 0 1px #000;
     text-decoration: none;
     font-size: 1.4rem;
 }
@@ -119,6 +120,7 @@ button {
     border-radius: 10px;
     box-shadow: 0 0 2px white;
     color: white;
+    text-shadow: 1px 0 2px #000, 0 -1px 2px #000, 0 1px 2px #000, -1px 0 2px #000;
     text-decoration: none;
     font-size: 1.4rem;
 }

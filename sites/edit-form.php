@@ -2,6 +2,8 @@
 session_start();
 require '../engine/functions.php';
 redirectCheckUserLogIn();
+$exerciseId = $_GET['id'];
+$row = getExerciseDetails($exerciseId); 
 checkIfEditPosible($row);
 ?>
 <!doctype html>
