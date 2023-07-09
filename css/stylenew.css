@@ -58,6 +58,14 @@ label {
     font-weight: bold;
     margin: 0;
 }
+.div-title img {
+    height: 250px;
+    width: 250px;
+    box-shadow: 0 0 2px white;
+    border-radius: 20px;
+    object-fit: cover;
+    object-position: top;
+}
 .div-title h1 {
     font-size: 2rem;
 }
@@ -70,7 +78,7 @@ label {
 }
 .div-title h4 {
     font-size: 1.4rem;
-    margin: 0;
+    margin-top: 0;
 }
 /* Div Text Area */
 .div-textarea {

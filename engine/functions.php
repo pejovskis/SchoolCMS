@@ -21,10 +21,13 @@ function displayMainMenuUserInfo()
             break;
     }
 
+    
+
     echo '<h1 class="bg-dark text-white p-3 rounded-5">' . $statusName . '</h1>' .
         '<h2> Logged in as: </h2>' .
-        '<h3>' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '</h3> 
-        <h4> - ' . $status  . ' - </h4>';
+        '<h3>' . $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] . '</h3>' .
+        '<h4> - ' . $status . ' - </h4>';        
+        echo ' ' . displayUserImg() . ' ';
 }
 
 //Display the log out Button
@@ -513,14 +516,32 @@ function addNewUser()
             $last_name = $_POST['last-name'];
             $status_level = $_POST['status-level'];
 
+            // Retrieve the file details
+            $profile_image_file = $_FILES['profile-image']['name'];
+            $profile_image_tmp = $_FILES['profile-image']['tmp_name'];
+
+            if (!empty($profile_image_tmp)) {
+                $profile_image_data = file_get_contents($profile_image_tmp);
+            } else {
+                $profile_image_data = null;
+            }
+
             // Check for empty fields
             if (empty($email) || empty($password) || empty($first_name) || empty($last_name) || empty($status_level)) {
                 echo '<script>alert("Please fill in all required fields.")</script>';
             } else {
                 // Insert the new user in -users- sql
                 $query = "INSERT INTO user (email, password, first_name, last_name, status_level) VALUES (?, ?, ?, ?, ?)";
+                if($profile_image_data !== null) {
+                    $query = "INSERT INTO user (email, password, first_name, last_name, status_level, user_photo) VALUES (?, ?, ?, ?, ?, ?)";
+                }
                 $stmt = mysqli_prepare($conn, $query);
-                mysqli_stmt_bind_param($stmt, "sssss", $email, $password, $first_name, $last_name, $status_level);
+                if ($profile_image_data !== null) {
+                    mysqli_stmt_bind_param($stmt, "ssssss", $email, $password, $first_name, $last_name, $status_level, $profile_image_data);
+                } else {
+                    mysqli_stmt_bind_param($stmt, "sssss", $email, $password, $first_name, $last_name, $status_level);
+                }
+                
 
                 if (mysqli_stmt_execute($stmt)) {
                     echo '<script>alert("New user registered successfully")</script>';
@@ -608,3 +629,15 @@ function displayNewCategoryField()
           <input name="new-category" type="text" class="form-control"
             placeholder="Create New Category">';
 }
+
+function displayUserImg() {
+    require '../engine/db-conn-users.php';
+
+    $userId = $_SESSION['id'];
+
+    $query = "SELECT * FROM user WHERE id =" . $userId . ";";
+    $stmt = $conn->query($query);
+    $result = mysqli_fetch_array($stmt);
+    echo '<img src="data:image/jpeg;base64,'.base64_encode( $result['user_photo'] ).'" alt="Loading Image Failed!"/>';
+}
+

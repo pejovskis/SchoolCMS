@@ -40,7 +40,7 @@ require '../engine/functions.php';
             </div>
             <div>
               <label for="profile-image">Profile Image</label>
-              <input name="profile-image" type="file" accept="image/*">
+              <input name="profile-image" type="file">
             </div>
             <div>
               <label for="status-level">Status Level</label>
