@@ -1,5 +1,5 @@
 <?php
-//database data
+//database conn
 $host = "localhost";
 $user = "root";
 $password = "";
@@ -11,5 +11,3 @@ $conn = mysqli_connect($host, $user, $password, $database);
 if (mysqli_connect_errno()) {
   die("Failed to connect to the Database" . mysqli_connect_errno());
 }
-
-?>

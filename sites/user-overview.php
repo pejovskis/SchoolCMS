@@ -22,30 +22,30 @@ redirectCheckSuperUserLogIn();
         <p>User Overview</p>
       </div>
       <div class="div-show-exercises">
-          <?php
-          btnBackToMainMenu();
-          ?>
+        <?php
+        btnBackToMainMenu();
+        ?>
       </div>
       <div style="overflow-x: auto;">
-      <table class="table-dark">
-        <thead class="table-head">
-          <tr class="table-row">
-            <th scope="col">#id</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Status Level</th>
-            <th scope="col">User Photo</th>
-            <th scope="col">Edit User</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          // Include the updated code from show-exercises.php
-          displayAllUsers();
-          ?>
-        </tbody>
-      </table>
+        <table class="table-dark">
+          <thead class="table-head">
+            <tr class="table-row">
+              <th scope="col">#id</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Status Level</th>
+              <th scope="col">User Photo</th>
+              <th scope="col">Edit User</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            // Include the updated code from show-exercises.php
+            displayAllUsers();
+            ?>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

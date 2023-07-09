@@ -17,7 +17,8 @@ require '../engine/functions.php';
   <div class="div-bg">
     <div class="div-menu">
       <div class="div-title">
-        <p>Add New User<p>
+        <p>Add New User
+        <p>
       </div>
       <div class="div-buttons">
         <form method="post" enctype="multipart/form-data">
@@ -47,22 +48,22 @@ require '../engine/functions.php';
               <input name="status-level" type="number">
             </div>
             <div>
-                1. Student;<br>
-                2. Teacher; <br>
-                9. Super Admin</div>
-            </div>
-            <div class="div-cancon">
-              <a class="btn-cancel" href="../sites/main-menu.php">cancel</a>
-              <button class="btn-confirm" name="submit" type="submit" value="add User">Add User</button>
-            </div>
-            <?php 
-              addNewUser();
-            ?>
+              1. Student;<br>
+              2. Teacher; <br>
+              9. Super Admin</div>
           </div>
-          
-        </form>
+          <div class="div-cancon">
+            <a class="btn-cancel" href="../sites/main-menu.php">cancel</a>
+            <button class="btn-confirm" name="submit" type="submit" value="add User">Add User</button>
+          </div>
+          <?php
+          addNewUser();
+          ?>
       </div>
+
+      </form>
     </div>
+  </div>
   </div>
 
 </body>

@@ -3,7 +3,7 @@ session_start();
 require '../engine/functions.php';
 redirectCheckUserLogIn();
 $exerciseId = $_GET['id'];
-$row = getExerciseDetails($exerciseId); 
+$row = getExerciseDetails($exerciseId);
 checkIfEditPosible($row);
 ?>
 <!doctype html>
@@ -32,7 +32,7 @@ checkIfEditPosible($row);
               <input type="text" name="exercise-name" value="<?php echo $row['name']; ?>">
               <label for="description">Description</label>
               <div class="div-textarea">
-              <textarea id="add-exercise-description" type="text" name="description">
+                <textarea id="add-exercise-description" type="text" name="description">
                 <?php echo $row['description']; ?>
               </textarea>
               </div>
@@ -40,14 +40,14 @@ checkIfEditPosible($row);
               <input name="hint" type="text" value="<?php echo $row['hint']; ?>">
               <div class="field-required">
                 <label for="subject">Subject</label>
-                <p> <span class="red-asterisk" >&#42;</span> This field is required.</p>
+                <p> <span class="red-asterisk">&#42;</span> This field is required.</p>
                 <select name="subject">
                   <?php
                   filterSubject();
                   ?>
                 </select>
               </div>
-              
+
               <?php
               if (superCheck()) {
                 displayNewSubjectField();
@@ -55,7 +55,7 @@ checkIfEditPosible($row);
               ?>
               <div class="field-required">
                 <label for="category">Category</label>
-                <p> <span class="red-asterisk" >&#42;</span> This field is required.</p>
+                <p> <span class="red-asterisk">&#42;</span> This field is required.</p>
                 <select name="category">
                   <?php
                   filterCategory();

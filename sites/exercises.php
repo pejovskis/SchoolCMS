@@ -41,32 +41,32 @@ require '../engine/functions.php';
         </form>
       </div>
       <div style="overflow-x: auto;">
-      <table class="table-dark">
-        <thead class="table-head">
-          <tr class="table-row">
-            <th scope="col">#id</th>
-            <th scope="col">Exercise Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Hint</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Category</th>
-            <th scope="col">Date</th>
-            <th scope="col">Added From</th>'
-            <th scope="col">PDF File</th>
+        <table class="table-dark">
+          <thead class="table-head">
+            <tr class="table-row">
+              <th scope="col">#id</th>
+              <th scope="col">Exercise Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Hint</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Category</th>
+              <th scope="col">Date</th>
+              <th scope="col">Added From</th>'
+              <th scope="col">PDF File</th>
+              <?php
+              if (teacherCheck() || superCheck()) {
+                echo '<th scope="col">Edit Excercise</th>';
+              }
+              ?>
+            </tr>
+          </thead>
+          <tbody>
             <?php
-            if (teacherCheck() || superCheck()) {
-              echo '<th scope="col">Edit Excercise</th>';
-            }
+            // Include the updated code from show-exercises.php
+            displayExercises();
             ?>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          // Include the updated code from show-exercises.php
-          displayExercises();
-          ?>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
