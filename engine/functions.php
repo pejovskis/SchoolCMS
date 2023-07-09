@@ -67,6 +67,16 @@ function deleteExerciseContent($exerciseId)
     $conn->close();
 }
 
+function deleteUserContent($userId)
+{
+    require '../engine/db-conn-users.php';
+
+    $query = "DELETE FROM user WHERE id = " . $userId;
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $conn->close();
+}
+
 function btnDeleteExercise()
 {
     require '../engine/db-conn-exercises.php';
@@ -85,6 +95,25 @@ function btnDeleteExercise()
             if ($_SESSION['id'] === $row['added_by'] || $_SESSION['status_level'] > 2) {
                 echo '<button class="btn-cancel" name="delete" type="submit" value="delete"> DELETE </button>';
             }
+        }
+    }
+}
+
+function btnDeleteUser()
+{
+    require '../engine/db-conn-users.php';
+    if (isset($_GET['id'])) {
+        $userId = $_GET['id'];
+
+        // Fetch data for $row from the database
+        $query = "SELECT * FROM user WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result && $result->num_rows > 0) {
+            echo '<button class="btn-cancel" name="delete" type="submit" value="delete"> DELETE </button>';
         }
     }
 }
@@ -558,25 +587,28 @@ function addNewUser()
     mysqli_close($conn);
 }
 
+function btnAddUseroverview() {
+    echo '<a href="../sites/user-overview.php" class="btn-menu"> User Overview </a>';
+}
 
 function btnAddExercise()
 {
-    echo '<a href="../sites/add-exercise.php" class="btn-menu" href="">Add Exercises</a>';
+    echo '<a href="../sites/add-exercise.php" class="btn-menu" >Add Exercises</a>';
 }
 
 function btnAddUser()
 {
-    echo '<a href="../sites/register.php" class="btn-menu" href="../sites/register.php">Add User</a>';
+    echo '<a href="../sites/register.php" class="btn-menu">Add User</a>';
 }
 
 function btnAddCategory()
 {
-    echo '<a href="../sites/add-category.php" class="btn-menu" href="../sites/add-category.php">Add Category</a>';
+    echo '<a href="../sites/add-category.php" class="btn-menu">Add Category</a>';
 }
 
 function btnAddSubject()
 {
-    echo '<a href="../sites/add-subject.php" class="btn-menu" href="../sites/add-subject.php">Add Subject</a>';
+    echo '<a href="../sites/add-subject.php" class="btn-menu">Add Subject</a>';
 }
 
 function inputAddSubject()
@@ -638,6 +670,49 @@ function displayUserImg() {
     $query = "SELECT * FROM user WHERE id =" . $userId . ";";
     $stmt = $conn->query($query);
     $result = mysqli_fetch_array($stmt);
-    echo '<img src="data:image/jpeg;base64,'.base64_encode( $result['user_photo'] ).'" alt="Loading Image Failed!"/>';
+    echo '<img class="user-img" src="data:image/jpeg;base64,'.base64_encode( $result['user_photo'] ).'" alt="Loading Image Failed!"/>';
 }
 
+function displayAllUsers() {
+    require 'db-conn-users.php';
+
+    $query = "SELECT * FROM user WHERE 1=1";
+    $stmt = $conn->query($query);
+    $isMobile = false;
+
+    // Check if the user agent is a mobile device
+    if (isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/mobile|android/i', $_SERVER['HTTP_USER_AGENT'])) {
+        $isMobile = true;
+    }
+
+    while ($row = mysqli_fetch_array($stmt)) {
+        echo "<tr class='table-row'>";
+
+        if (!$isMobile) {
+            echo "<th scope='row'>" . $row['id'] . "</th>";
+            echo "<td>" . $row['first_name'] . "</td>";
+            echo "<td>" . $row['last_name'] . "</td>";
+            echo "<td>" . $row['email'] . "</td>";
+            echo "<td>" . $row['status_level'] . "</td>";
+            echo "<td><img class='user-img' src='data:image/jpeg;base64,".base64_encode($row['user_photo'])."' alt='Loading Image Failed!'/></td>";
+        }
+
+        echo "<td><a class='btn-cancel' href='../engine/edit-user.php?id=" . $row['id'] . "'>Edit User</a></td>";
+
+        if ($isMobile) {
+            echo "<td>Exercise id: " . $row['id'] . "</td>";
+            echo "<td>Name: " . $row['first_name'] . "</td>";
+            echo "<td>Description: " . $row['last_name'] . "</td>";
+            echo "<td>Hint: " . $row['email'] . "</td>";
+            echo "<td>Subject: " . $row['status_level'] . "</td>";
+            echo "<td><img class='user-img' src='data:image/jpeg;base64,".base64_encode($row['user_photo'])."' alt='Loading Image Failed!'/></td>";
+        }
+
+        echo "</tr>";
+    }
+
+    mysqli_close($conn);
+}
+
+
+    

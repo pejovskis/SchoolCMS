@@ -21,7 +21,7 @@ checkIfEditPosible($row);
   <div class="div-bg">
     <div class="div-menu">
       <div class="div-title">
-        <p> Edit Exercise id:<?php echo $row['id']; ?> </p>
+        <p> Edit Exercise Id:<?php echo $row['id']; ?> </p>
       </div>
       <div class="div-buttons">
         <form method="POST" action="update.php">

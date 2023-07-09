@@ -28,6 +28,7 @@
             <?php
               if (superCheck()) {
                 btnAddUser();
+                btnAddUserOverview();
                 btnAddSubject();
               } 
               
