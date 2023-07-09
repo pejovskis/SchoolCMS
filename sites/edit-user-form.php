@@ -36,7 +36,7 @@ $exerciseId = $_GET['id'];
                             <input name="status-level" type="text" value="<?php echo $row['status_level']; ?>">
                             <div>
                                 <label for="profile-image">User Photo (.jpeg)</label>
-                                <input name="profile-image" type="file" accept="image/jpeg">
+                                <input class="file-input-field" name="profile-image" type="file" accept="image/jpeg">
                             </div>
                         </div>
                         <div class="div-cancon">

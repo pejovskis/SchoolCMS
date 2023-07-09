@@ -642,13 +642,24 @@ function addNewUser()
             isset($_POST['password']) &&
             isset($_POST['first-name']) &&
             isset($_POST['last-name']) &&
-            isset($_POST['status-level'])
+            isset($_POST['status-level']) && in_array($_POST['status-level'], ['student', 'teacher', 'super'])
         ) {
             $email = $_POST['email'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $first_name = $_POST['first-name'];
             $last_name = $_POST['last-name'];
             $status_level = $_POST['status-level'];
+            switch($status_level) {
+                case 'student':
+                    $status_level = 1;
+                    break;
+                case 'teacher':
+                    $status_level = 2;
+                    break;
+                case 'super':
+                    $status_level = 9;
+                    break;
+            }
             $profile_image_file = $_FILES['profile-image']['name'];
             $profile_image_tmp = $_FILES['profile-image']['tmp_name'];
 

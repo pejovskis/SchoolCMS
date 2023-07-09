@@ -23,7 +23,7 @@ require '../engine/functions.php';
       <div class="div-buttons">
         <form method="post" enctype="multipart/form-data">
           <div class="div-elements">
-            <div class="">
+            <div>
               <label for="email">Email address</label>
               <input name="email" type="email">
             </div>
@@ -41,29 +41,27 @@ require '../engine/functions.php';
             </div>
             <div>
               <label for="profile-image">Profile Image</label>
-              <input name="profile-image" type="file" accept="image/jpeg">
+              <input style="height: 55px;" name="profile-image" type="file" accept="image/jpeg">
             </div>
             <div>
-              <label for="status-level">Status Level</label>
-              <input name="status-level" type="number">
+              <label>Student </label>
+              <input type="radio" name="status-level" value="student" required>
+              <label> Teacher </label>
+              <input type="radio" name="status-level" value="teacher" required>
+              <label>Super Admin</label>
+              <input type="radio" name="status-level" value="super" required>
+            <div class="div-cancon">
+              <a class="btn-cancel" href="../sites/main-menu.php">cancel</a>
+              <button class="btn-confirm" name="submit" type="submit" value="add User">Add User</button>
             </div>
-            <div>
-              1. Student;<br>
-              2. Teacher; <br>
-              9. Super Admin</div>
+            <?php
+            addNewUser();
+            ?>
           </div>
-          <div class="div-cancon">
-            <a class="btn-cancel" href="../sites/main-menu.php">cancel</a>
-            <button class="btn-confirm" name="submit" type="submit" value="add User">Add User</button>
-          </div>
-          <?php
-          addNewUser();
-          ?>
-      </div>
 
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
   </div>
 
 </body>

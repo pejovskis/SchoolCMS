@@ -267,9 +267,8 @@ label {
     color: red;
 }
 
-/* Media querries for responsive design */
+/* Responsive Design */
 @media only screen and (max-width: 480px) {
-    
     .div-bg {
         background-color: #222;
     }
@@ -291,60 +290,59 @@ label {
         font-size: 2rem;
     }
 
-}
-
-/* Responsive styles */
-@media only screen and (max-width: 600px) {
+    /* Styles from the second media query */
     .div-menu {
-      width: 100%;
-      margin: 10px;
+        width: 100%;
+        margin: 10px;
     }
 
     .form-filter {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 
     .form-filter select {
-      width: 100%;
-      margin-bottom: 10px;
+        width: 100%;
+        margin-bottom: 10px;
     }
 
     .table-dark {
-      overflow-x: auto;
-      display: block;
+        overflow-x: auto;
+        display: block;
     }
 
     .table-dark thead {
-      display: none;
+        display: none;
     }
 
     .table-dark tbody,
     .table-dark tr,
     .table-dark th,
     .table-dark td {
-      display: block;
-      padding: 5px;
-      text-align: center;
+        display: block;
+        padding: 5px;
+        text-align: center;
     }
 
     .table-dark td:before {
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
     }
 
     .div-bg {
-      overflow: auto;
+        overflow: auto;
     }
 
     .div-title {
-      text-align: center;
-      padding: 10px;
+        text-align: center;
+        padding: 10px;
     }
-  }
+}
+
+
 
   
