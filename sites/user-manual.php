@@ -19,42 +19,33 @@ require '../engine/functions.php';
         <p>User Manual</p>
       </div>
       <div class="div-textarea">
-        <textarea>
-Willkommen zur App-Bedienungshilfe! Diese spezielle App wurde entwickelt, 
-um Benutzerinteraktionen zu simulieren und Testumgebungen für verschiedene Szenarien bereitzustellen. 
-Bitte beachten Sie, dass dies eine fiktive App ist und keine echte Funktionalität bietet. 
-Hier sind einige der simulierten Funktionen, die Sie testen können:
+        <textarea style="text-align: center;">
+        Please note:
+There are no actual data or sensitive information used in this web application!
 
-Registrierung:
+To log in and test the app, please contact@pejovskisashko.de to obtain the fictional login credentials.
 
-1. Geben Sie Ihren Benutzernamen, Ihre E-Mail-Adresse und ein Passwort ein, 
-um sich zu registrieren.
-Die Registrierung ist lediglich simuliert und erzeugt keine tatsächlichen Konten.
-Anmelden:
+After acquiring the login information, proceed to the login page and enter the provided credentials.
 
-2. Verwenden Sie Ihre zuvor erstellten Anmeldeinformationen, um sich anzumelden.
-Dieser Vorgang simuliert den Anmeldevorgang und prüft die eingegebenen Daten.
-Profilverwaltung:
+The app offers three modes:
 
-3. Bearbeiten Sie Ihr Profil, indem Sie persönliche Informationen wie Name, 
-Geburtsdatum und Profilbild eingeben.
-Diese Informationen werden nicht gespeichert und dienen nur zu Testzwecken.
-Einstellungen:
+1. Student Mode: Upon logging in, students can view the available exercises and download them. They have read-only access to the exercises.
 
-4. Simulieren Sie verschiedene Einstellungen, wie beispielsweise das Ändern 
-der Sprache, des Farbschemas oder der Benachrichtigungseinstellungen.
-Diese Einstellungen haben keinen Einfluss auf das tatsächliche Gerät oder die App.
-Simulierte Funktionen:
+2. Teacher Mode: Upon logging in, teachers can view, edit, and add new exercises with various parameters. While most fields are optional, the subject and category fields are always required. Teachers can only edit or delete exercises created by themselves. For example, a history teacher cannot edit an exercise created by a biology teacher. Additionally, any modifications made to an exercise will update the exercise's timestamp, preventing last-minute changes.
 
-5. Testen Sie verschiedene App-Funktionen, wie beispielsweise das Hochladen von Bildern, 
-das Versenden von Nachrichten oder das Durchsuchen von Inhalten.
-Diese Funktionen erzeugen lediglich simulierten Output und haben keinen Einfluss auf externe Systeme.
-Bitte beachten Sie, dass diese App-Bedienungshilfe ausschließlich zu Testzwecken erstellt wurde und 
-keine echte Funktionalität bietet. Die in der App angezeigten Informationen und Daten sind nicht echt 
-und werden nicht gespeichert. Verwenden Sie diese App-Bedienungshilfe ausschließlich 
-für Test- und Schulungszwecke.
+3. Super User Mode: The super user has full control over the application. They can create new users, exercises, and have the ability to edit or delete any exercise. The super user has unrestricted access and privileges within the app.
 
-Vielen Dank für Ihre Teilnahme!</textarea>
+IMPORTANT: To avoid confusion among teachers, ONLY the Super User has the authority to add new subjects. However, teachers are free to create as many new categories as they require.
+
+If the database is empty at the time of your login, feel free to populate it with some fictitious information. Please be mindful of the language you use. &#128513
+
+Please note that only the Super User can add new subjects, ensuring proper organization and consistency within the app. Teachers have the flexibility to create additional categories specific to their subjects or topics.
+
+Enjoy exploring the app and feel free to populate the database with appropriate mock data to facilitate your testing. Should you have any further questions or concerns, please don't hesitate to contact us at contact@pejovskisashko.de
+
+Please enjoy exploring the app, and if you have any further questions, don't hesitate to contact@pejovskisashko.de
+
+</textarea>
         <div class="div-buttons">
           <?php
           btnBackToMainMenu();

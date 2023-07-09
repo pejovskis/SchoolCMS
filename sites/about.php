@@ -19,33 +19,35 @@ require '../engine/functions.php';
         <p>About</p>
       </div>
       <div class="div-textarea">
-        <textarea>
+        <textarea style="text-align: center;">
 
-Titel: "DBManager - Eine revolutionäre App zur Verwaltung von Bildungsdaten"
+        "SEM - Revolutionizing Education Data Management with DBManager"
 
-Beschreibung: DBManager ist eine bahnbrechende App, die entwickelt wurde, um den reibungslosen Austausch von Informationen zwischen Schülern und Dozenten zu ermöglichen. Diese fortschrittliche Anwendung verwaltet Datenbanken, um den Zugriff auf Aufgaben und Informationen zu koordinieren. Mit DBManager können Schüler auf ihre zugewiesenen Aufgaben zugreifen, während Dozenten neue Aufgaben erstellen und Daten aktualisieren können.
+SEM (School Exercise Manager) is an app developed by Sashko Pejovski, a developer from Cologne, Germany. It introduces DBManager, an innovative application designed to facilitate seamless information exchange between students and instructors. This advanced app harnesses the power of database management to coordinate access to assignments and information. With SEM, students can effortlessly access their assigned tasks, while teachers can create new exercises and update data.
 
-Funktionen:
+Features:
+Student Access: -Students can log in to the app and access their assigned exercises.
+The app provides a clear list of current assignments, ensuring students always stay organized.
+Additionally, students can access additional resources such as lecture materials or task-related notes.
 
-Schülerzugriff:
+Teacher Privileges: -Teachers enjoy enhanced permissions, enabling them to create and edit exercises.
+Teachers can assign specific parameters to exercises.
+They can also include additional attachments, such as sample answers or supplementary materials, to assist students in completing the exercises.
 
-Schüler können sich in der App anmelden und auf ihre zugewiesenen Aufgaben zugreifen.
-Die App stellt eine übersichtliche Liste der aktuellen Aufgaben dar, damit Schüler immer den Überblick behalten.
-Schüler können den Status ihrer Aufgaben verfolgen, beispielsweise ob sie abgeschlossen oder noch ausstehend sind.
-Zusätzlich können Schüler weitere Ressourcen wie Vorlesungsmaterialien oder Anmerkungen zu den Aufgaben einsehen.
-Dozentenrechte:
+Efficient Database Management:
+The app securely manages all data in an efficient database system.
+Information is organized and can be retrieved and updated at any time.
+Encryption and secure connections ensure the confidentiality and integrity of the data.
 
-Dozenten haben erweiterte Berechtigungen und können neue Aufgaben erstellen und bearbeiten.
-Dozenten können Aufgaben mit spezifischen Parametern wie Fälligkeitsdatum, Schwierigkeitsgrad und Gewichtung versehen.
-Sie können auch zusätzliche Anhänge wie Beispielantworten oder zusätzliche Materialien hinzufügen, um den Schülern bei der Aufgabenbearbeitung zu helfen.
-Datenbankverwaltung:
+Upcoming Features: -Student Favorite Exercise Tab: Students will have the ability to mark exercises as favorites for easy access.
+User Password Change: Users will have the option to change their passwords within the app.
+Search Field and Category Filter Dependency: A search field will be implemented, allowing users to search for exercises based on specific criteria. It will also be dependent on the category filter from the subject, providing refined search results.
 
-Die App verwaltet alle Daten in einer sicheren und effizienten Datenbank.
-Die Informationen werden organisiert und können jederzeit abgerufen und aktualisiert werden.
-Durch die Verwendung von Verschlüsselung und sicheren Verbindungen wird die Vertraulichkeit und Integrität der Daten gewährleistet.
-Hinweis: Diese App ist eine fiktive Anwendung, die für Testzwecke erstellt wurde. Sie hat keine tatsächliche Funktionalität und speichert keine echten Daten. Sie wurde entwickelt, um Benutzerinteraktionen zu simulieren und die Verwaltung von Bildungsdaten zu demonstrieren.
+Please note: SEM is a fictional application created for testing & learning purposes! It does not have actual functionality and does not store real data. It has been designed to simulate user interactions and demonstrate the management of educational data.
 
-Genießen Sie die Vorteile einer effizienten und organisierten Datenverwaltung mit DBManager.</textarea>
+There are no real information of any kind included!
+
+Experience the benefits of efficient and organized data management with SEM - the ultimate tool for managing school exercises.</textarea>
         <div class="div-buttons">
           <?php
           btnBackToMainMenu();
