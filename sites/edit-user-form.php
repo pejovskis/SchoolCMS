@@ -22,7 +22,7 @@ $exerciseId = $_GET['id'];
                 <p> Edit User Id:<?php echo $row['id']; ?> </p>
             </div>
             <div class="div-buttons">
-                <form method="POST" action="update-user.php">
+                <form method="POST" action="update-user.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <div class="div-elements">
                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">

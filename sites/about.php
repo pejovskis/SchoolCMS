@@ -47,6 +47,8 @@ Please note: SEM is a fictional application created for testing & learning purpo
 
 There are no real information of any kind included!
 
+Avatars credit: http://www.canva.com
+
 Experience the benefits of efficient and organized data management with SEM - the ultimate tool for managing school exercises.</textarea>
         <div class="div-buttons">
           <?php
