@@ -40,7 +40,7 @@ $exerciseId = $_GET['id'];
               </div>
             </div>
             <div class="div-cancon">
-              <a class="btn-cancel" href="../sites/exercises.php"> cancel </a>
+              <a class="btn-cancel" href="../sites/user-overview.php"> cancel </a>
               <button name="submit" type="submit" value="update" class="btn-confirm">save</button>
               <?php btnDeleteUser(); ?>
             </div>
