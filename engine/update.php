@@ -12,6 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $category = $_POST['category'];
         $current_date = date('Y-m-d');
 
+        if(!empty($_POST['new-subject'])) {
+            $newSubject = $_POST['new-subject'];
+            $subject = $newSubject;
+        }
+        
+        if(!empty($_POST['new-category'])) {
+            $newCategory = $_POST['new-category'];
+            $category = $newCategory;
+        }
+
         $query = "UPDATE exercise SET name=?, description=?, hint=?, subject=?, category=?, add_date=? WHERE id=?";
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_bind_param($stmt, 'sssssss', $name, $description, $hint, $subject, $category, $current_date, $id);
